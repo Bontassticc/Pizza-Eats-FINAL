@@ -319,7 +319,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 19.2, y: 10.8}
+    oldSize: {x: 4.15, y: 2.95}
     newSize: {x: 19.2, y: 10.8}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -395,6 +395,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d30ad64daffff343a044ba767de7191, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isSnapped: 0
 --- !u!1 &165474627
 GameObject:
   m_ObjectHideFlags: 0
@@ -586,6 +587,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d30ad64daffff343a044ba767de7191, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isSnapped: 0
 --- !u!1 &421637356
 GameObject:
   m_ObjectHideFlags: 0
@@ -978,6 +980,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d30ad64daffff343a044ba767de7191, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isSnapped: 0
 --- !u!1 &540000963
 GameObject:
   m_ObjectHideFlags: 0
@@ -1253,6 +1256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d30ad64daffff343a044ba767de7191, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isSnapped: 0
 --- !u!1 &670626194
 GameObject:
   m_ObjectHideFlags: 0
