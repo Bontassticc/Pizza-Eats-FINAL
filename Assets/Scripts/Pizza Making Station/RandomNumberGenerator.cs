@@ -5,25 +5,22 @@ using UnityEngine.UI;
 
 public class RandomNumberGenerator : MonoBehaviour
 {
-    public Text randomNumberText;
-    // Start is called before the first frame update
+    public Text randomNumberText1;
+    public Text randomNumberText2;
+    public Text randomNumberText3;
 
-    private void Start()
-    {
-        GenerateRandomNumber();
-    }
+  
    public void GenerateRandomNumber()
     {
         int randomNumber1 = Random.Range(1, 9);
         int randomNumber2 = Random.Range(1, 9);
         int randomNumber3 = Random.Range(1, 9);
 
-        randomNumberText.text = "Random Number: " + randomNumber1 + "," + randomNumber2 + "," + randomNumber3;
+        randomNumberText1.text = randomNumber1.ToString();
+        randomNumberText2.text = randomNumber2.ToString();
+        randomNumberText3.text = randomNumber3.ToString();
+       
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+  
 }
