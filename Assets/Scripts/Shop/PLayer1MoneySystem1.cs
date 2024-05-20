@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Player1MoneySystem : MonoBehaviour
+public class PLayer1MoneySystem1 : MonoBehaviour
 {
     public int money = 500;
     public Text moneyText;
@@ -19,7 +19,7 @@ public class Player1MoneySystem : MonoBehaviour
     public int PepperoniPrice = 45;
 
 
-    
+
     private void Start()
     {
         UpdateMoneyText();
@@ -121,4 +121,4 @@ public class Player1MoneySystem : MonoBehaviour
     }
 }
 
-   
+

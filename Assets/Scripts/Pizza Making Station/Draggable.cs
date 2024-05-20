@@ -31,6 +31,6 @@ public bool isSnapped;
     private void OnMouseUp() 
     {
         isDragged = false;
-        dragEndedCallBack(this);
+        //dragEndedCallBack(this);
     }
 }
