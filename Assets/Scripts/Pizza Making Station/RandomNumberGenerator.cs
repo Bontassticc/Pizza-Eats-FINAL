@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,7 +18,5 @@ public class RandomNumberGenerator : MonoBehaviour
         randomNumberText2.text = randomNumber2.ToString();
         randomNumberText3.text = randomNumber3.ToString();
        
-    }
-
-  
+    }  
 }

@@ -4,16 +4,15 @@ using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class Draggable : MonoBehaviour
+{
+    public delegate void DragEndDelegate(Draggable draggableObject);
 
-  {
- public delegate void DragEndDelegate(Draggable draggableObject);
+    public DragEndDelegate dragEndedCallBack;
 
-public DragEndDelegate dragEndedCallBack;
-
-private bool isDragged = false;
-private Vector3 mouseDragStartPosition;
-private Vector3 spriteDragStartPosition;
-public bool isSnapped;
+    private bool isDragged = false;
+    private Vector3 mouseDragStartPosition;
+    private Vector3 spriteDragStartPosition;
+    public bool isSnapped;
 
     private void OnMouseDown()
     {

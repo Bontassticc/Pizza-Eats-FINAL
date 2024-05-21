@@ -1481,6 +1481,7 @@ GameObject:
   m_Component:
   - component: {fileID: 121116088}
   - component: {fileID: 121116089}
+  - component: {fileID: 121116090}
   m_Layer: 0
   m_Name: Bowl 7
   m_TagString: Untagged
@@ -1555,6 +1556,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &121116090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 121116087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7b9b9e21de62334b81b989b1a6615e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  associatedNumber: 7
 --- !u!1 &123861240
 GameObject:
   m_ObjectHideFlags: 0
@@ -2364,6 +2378,7 @@ GameObject:
   m_Component:
   - component: {fileID: 201562459}
   - component: {fileID: 201562460}
+  - component: {fileID: 201562461}
   m_Layer: 0
   m_Name: Bowl 3
   m_TagString: Untagged
@@ -2438,6 +2453,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &201562461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 201562458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7b9b9e21de62334b81b989b1a6615e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  associatedNumber: 3
 --- !u!1 &201570079
 GameObject:
   m_ObjectHideFlags: 0
@@ -3591,6 +3619,7 @@ GameObject:
   m_Component:
   - component: {fileID: 325021737}
   - component: {fileID: 325021738}
+  - component: {fileID: 325021739}
   m_Layer: 0
   m_Name: Bowl 5
   m_TagString: Untagged
@@ -3665,6 +3694,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &325021739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 325021736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7b9b9e21de62334b81b989b1a6615e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  associatedNumber: 5
 --- !u!1 &325200309
 GameObject:
   m_ObjectHideFlags: 0
@@ -4851,6 +4893,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 477031034}
+  - component: {fileID: 477031035}
   m_Layer: 0
   m_Name: Bowls
   m_TagString: Untagged
@@ -4881,6 +4924,27 @@ Transform:
   - {fileID: 1208121283}
   m_Father: {fileID: 1770129937}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &477031035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 477031033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50fed0ecbdfd89c4e8fd62b1367febcc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bowls:
+  - {fileID: 868542193}
+  - {fileID: 1091611301}
+  - {fileID: 201562461}
+  - {fileID: 717664420}
+  - {fileID: 325021739}
+  - {fileID: 1797634433}
+  - {fileID: 121116090}
+  - {fileID: 1208121285}
 --- !u!1 &485390462
 GameObject:
   m_ObjectHideFlags: 0
@@ -5753,6 +5817,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 0
+      - m_Target: {fileID: 595011660}
+        m_TargetAssemblyTypeName: RollAndWriteController, Assembly-CSharp
+        m_MethodName: GenerateNumbers
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &540000966
 MonoBehaviour:
@@ -6365,6 +6441,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 594279621}
   m_CullTransparentMesh: 1
+--- !u!1 &595011658
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 595011659}
+  - component: {fileID: 595011660}
+  m_Layer: 0
+  m_Name: RandomNumberController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &595011659
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 595011658}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -6.2319026, y: -0.6973006, z: 0.33002546}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &595011660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 595011658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9d05668d41f96c4ca8d4a1127b3d250, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  view: {fileID: 1372523486}
+  rolledNumbers: []
+  maxRollsPerTurn: 3
+  minimum: 1
+  maximum: 9
 --- !u!1 &608184550 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8087905820809393263, guid: b7cf491d1ba92ea4a9ffd05411f12012, type: 3}
@@ -7081,6 +7206,7 @@ GameObject:
   m_Component:
   - component: {fileID: 717664418}
   - component: {fileID: 717664419}
+  - component: {fileID: 717664420}
   m_Layer: 0
   m_Name: Bowl 4
   m_TagString: Untagged
@@ -7155,6 +7281,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &717664420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 717664417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7b9b9e21de62334b81b989b1a6615e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  associatedNumber: 4
 --- !u!1 &732827198
 GameObject:
   m_ObjectHideFlags: 0
@@ -8371,6 +8510,7 @@ GameObject:
   m_Component:
   - component: {fileID: 868542191}
   - component: {fileID: 868542192}
+  - component: {fileID: 868542193}
   m_Layer: 0
   m_Name: Bowl 1
   m_TagString: Untagged
@@ -8445,6 +8585,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &868542193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 868542190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7b9b9e21de62334b81b989b1a6615e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  associatedNumber: 1
 --- !u!1 &872419692
 GameObject:
   m_ObjectHideFlags: 0
@@ -11545,6 +11698,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1091611299}
   - component: {fileID: 1091611300}
+  - component: {fileID: 1091611301}
   m_Layer: 0
   m_Name: Bowl 2
   m_TagString: Untagged
@@ -11619,6 +11773,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1091611301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1091611298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7b9b9e21de62334b81b989b1a6615e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  associatedNumber: 2
 --- !u!1 &1095964245
 GameObject:
   m_ObjectHideFlags: 0
@@ -13121,6 +13288,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1208121283}
   - component: {fileID: 1208121284}
+  - component: {fileID: 1208121285}
   m_Layer: 0
   m_Name: Bowl 8
   m_TagString: Untagged
@@ -13195,6 +13363,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1208121285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1208121282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7b9b9e21de62334b81b989b1a6615e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  associatedNumber: 8
 --- !u!1 &1221044971
 GameObject:
   m_ObjectHideFlags: 0
@@ -14275,6 +14456,7 @@ GameObject:
   - component: {fileID: 1372523483}
   - component: {fileID: 1372523485}
   - component: {fileID: 1372523484}
+  - component: {fileID: 1372523486}
   m_Layer: 5
   m_Name: GeneralPanel
   m_TagString: Untagged
@@ -14344,6 +14526,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1372523482}
   m_CullTransparentMesh: 1
+--- !u!114 &1372523486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1372523482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52535096f76781b47aed1eeb57376de7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  randomNumbersTextBox:
+  - {fileID: 732827201}
+  - {fileID: 109042484}
+  - {fileID: 1423092222}
 --- !u!1 &1379186100
 GameObject:
   m_ObjectHideFlags: 0
@@ -18431,6 +18629,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1797634431}
   - component: {fileID: 1797634432}
+  - component: {fileID: 1797634433}
   m_Layer: 0
   m_Name: Bowl 6
   m_TagString: Untagged
@@ -18505,6 +18704,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1797634433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1797634430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7b9b9e21de62334b81b989b1a6615e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  associatedNumber: 6
 --- !u!1 &1816130601
 GameObject:
   m_ObjectHideFlags: 0
@@ -22825,3 +23037,4 @@ SceneRoots:
   - {fileID: 1756681406}
   - {fileID: 1600255084}
   - {fileID: 485390466}
+  - {fileID: 595011659}
