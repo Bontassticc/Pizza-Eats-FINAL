@@ -68,9 +68,9 @@ public class MenuManager : MonoBehaviour
         movementDiceRoll = Random.Range(2, 7);
     }
 
-    public void Restart()
+    public void Restart(string sceneName)
     {
-        SceneManager.LoadScene("Start");
+        SceneManager.LoadScene(sceneName);
     }
 
     public void Quit()
