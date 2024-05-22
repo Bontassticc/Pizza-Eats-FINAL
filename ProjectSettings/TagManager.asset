@@ -17,6 +17,7 @@ TagManager:
   - Slice7
   - Slice8
   - Ingredient
+  - Tile
   layers:
   - Default
   - TransparentFX
@@ -53,4 +54,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Win Screen
+    uniqueID: 1221192199
     locked: 0

@@ -4,15 +4,37 @@ using UnityEngine;
 
 public class PanelManagerScript : MonoBehaviour
 {
-    public GameObject Panel;
+    public GameObject confirm;
+    public GameObject turnOver;
+    public GameObject displayMoves;
+    public GameObject instructionPanel;
+    public GameObject reset;
+    public GameObject scores;
 
-    public void OpenPanel()
+    public GameObject grid;
+    public GameObject player1;
+    public GameObject player2;
+
+    public GameObject stationCanvas;
+
+
+    public void GridMap()
     {
-        if (Panel != null)
+        if (grid != null)
         {
-            bool isActive = Panel.activeSelf;
+            bool isActive = grid.activeSelf;
 
-            Panel.SetActive(!isActive);
+            grid.SetActive(!isActive);
+            player1.SetActive(!isActive);
+            player2.SetActive(!isActive);
+            confirm.SetActive(!isActive);
+            turnOver.SetActive(!isActive);
+            displayMoves.SetActive(!isActive);
+            reset.SetActive(!isActive);
+            scores.SetActive(!isActive);
+
+            stationCanvas.SetActive(isActive);
+            instructionPanel.SetActive(false);
         }
     }
 }
