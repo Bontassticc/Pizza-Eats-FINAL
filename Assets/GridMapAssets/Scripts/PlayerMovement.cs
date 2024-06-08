@@ -8,9 +8,6 @@ using static GameManager;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject highlight;
-
     public GameObject player1;
     public GameObject player2;
     public Animator player1Anim;
@@ -18,11 +15,13 @@ public class PlayerMovement : MonoBehaviour
 
     public Tilemap tilemap;
     public List<Vector3> clickedGridPoints = new();
+    private Dictionary<Vector3Int, Color> originalTileColors = new Dictionary<Vector3Int, Color>();
 
     Vector3 targetPos;
 
     MenuManager menuManager;
-    RandomNumberGenerator rndGen;
+    //PanelManagerScript panelManager;
+    //RandomNumberGenerator rndGen;
     int currentIndex = 0;
     bool isPlayer1Moving;
     bool isPlayer2Moving;
@@ -91,20 +90,23 @@ public class PlayerMovement : MonoBehaviour
     int player2Score = 0;
     public Text score1;
     public Text score2;
-    bool player1Turn = true;
+    public bool player1Turn = true;
     public GameObject player1Station;
     public GameObject player2Station;
+    private Color newColor;
     void Start()
     {
         //isConfirmed = false;
         menuManager = FindObjectOfType<MenuManager>();
-        rndGen = FindObjectOfType<RandomNumberGenerator>();
+        //rndGen = FindObjectOfType<RandomNumberGenerator>();
+        //panelManager = FindAnyObjectByType<PanelManagerScript>();
         isPlayer1Moving = false;
         isPlayer2Moving = false;
+        player1Turn = true;
 
         instructions.text = "To move the player, make a path for the player by clicking certain grid tiles: " +
-            "\n The tiles you click all have to be next to each other, more specifically, the first tile you click has to be next to the player.";
-        StartCoroutine(ActivateInstructionMessage(instructionPanel, 10.0f));
+            "\nThe tiles you click all have to be next to each other, more specifically, the first tile you click has to be next to the player.";
+        StartCoroutine(ActivateInstructionMessage(instructionPanel, 12.0f));
 
         housePos1 = new Vector3(-0.35f, 2.0f, 0f);
         housePos2 = new Vector3(4.4f, 1.2f, 0f);
@@ -117,26 +119,36 @@ public class PlayerMovement : MonoBehaviour
         housePos9 = new Vector3(0.4f, -2.0f, 0f);
         housePos10 = new Vector3(-6.0f, -2.8f, 0f);
         housePos11 = new Vector3(3.6f, -2.8f, 0f);
+
+        StoreOriginalTileColors();
+        newColor = Color.grey;
     }
 
-    /*void OnMouseEnter()
+    void StoreOriginalTileColors()
     {
-        if (!tileData.isClicked)
+        // Get all the positions of the tiles in the Tilemap
+        BoundsInt bounds = tilemap.cellBounds;
+        TileBase[] allTiles = tilemap.GetTilesBlock(bounds);
+
+        foreach (var pos in bounds.allPositionsWithin)
         {
-            highlight.SetActive(true);
-            //MenuManager.Instance.ShowTileInfo(this);
+            Vector3Int localPlace = new Vector3Int(pos.x, pos.y, pos.z);
+            if (!tilemap.HasTile(localPlace)) continue;
+
+            // Store the original color of each tile if it's not already stored
+            if (!originalTileColors.ContainsKey(localPlace))
+            {
+                originalTileColors.Add(localPlace, tilemap.GetColor(localPlace));
+            }
         }
     }
-
-    void OnMouseExit()
+    public void ResetColors()
     {
-        if (!tileData.isClicked)
+        foreach (var kvp in originalTileColors)
         {
-            _highlight.SetActive(false);
-            //MenuManager.Instance.ShowTileInfo(null);
+            tilemap.SetColor(kvp.Key, kvp.Value);
         }
-    }*/
-
+    }
 
     private void Update()
     {
@@ -155,11 +167,15 @@ public class PlayerMovement : MonoBehaviour
                     if (distanceToPlayer1 <= 1.5f && player1Turn)
                     {
                         clickedGridPoints.Add(tileWorldPos);
+                        //highlight grid cells
+                        tilemap.SetTileFlags(cellPos, TileFlags.None);
+                        tilemap.SetColor(cellPos, ConvertToLinearSpace(newColor));
+
                         if (!message3Displayed)
                         {
                             instructions.text = "The number of tiles you select needs to be within the moves you can make, " +
                                 "decided by the random movement value you got. When you are done selecting your path, click on the confirm button.";
-                            StartCoroutine(ActivateInstructionMessage(instructionPanel, 10.0f));
+                            StartCoroutine(ActivateInstructionMessage(instructionPanel, 12.0f));
                             message3Displayed = true;
                         }
                     }
@@ -177,6 +193,9 @@ public class PlayerMovement : MonoBehaviour
                     if (distanceToPlayer2 <= 1.5f && !player1Turn)
                     {
                         clickedGridPoints.Add(tileWorldPos);
+                        //highlight grid cells
+                        tilemap.SetTileFlags(cellPos, TileFlags.None);
+                        tilemap.SetColor(cellPos, ConvertToLinearSpace(newColor));
                         if (!message3Displayed)
                         {
                             instructions.text = "The number of tiles you select needs to be within the moves you can make, " +
@@ -209,6 +228,9 @@ public class PlayerMovement : MonoBehaviour
                     else
                     {
                         clickedGridPoints.Add(tileWorldPos);
+                        //highlight grid cells
+                        tilemap.SetTileFlags(cellPos, TileFlags.None);
+                        tilemap.SetColor(cellPos, ConvertToLinearSpace(newColor));
                     }
                 }
             }
@@ -217,32 +239,35 @@ public class PlayerMovement : MonoBehaviour
         if (menuManager.isButtonClicked && player1Turn)
         {
             MovePlayer1ToTile();
-            isPlayer1Moving = true;
-            if (isPlayer1Moving)
-            {
-                player1Anim.SetBool("notMoving", false);
-                player1Anim.SetBool("IsMoving", true);
-            }else
-            {
-                player1Anim.SetBool("notMoving", true);
-                player1Anim.SetBool("IsMoving", false);
-            }
+            //isPlayer1Moving = true;
+            ResetColors();
+        }
+        if (isPlayer1Moving)
+        {
+            player1Anim.SetBool("notMoving", false);
+            player1Anim.SetBool("IsMoving", true);
+        }
+        else
+        {
+            player1Anim.SetBool("notMoving", true);
+            player1Anim.SetBool("IsMoving", false);
         }
 
         if (menuManager.isButtonClicked && !player1Turn)
         {
             MovePlayer2ToTile();
-            isPlayer2Moving = true;
-            if (isPlayer2Moving)
-            {
-                player2Anim.SetBool("IsMoving", true);
-                player2Anim.SetBool("notMoving", false);
-            }
-            else
-            {
-                player2Anim.SetBool("notMoving", true);
-                player2Anim.SetBool("IsMoving", false);
-            }
+            ResetColors();
+            //isPlayer2Moving = true;
+        }
+        if (isPlayer2Moving)
+        {
+            player2Anim.SetBool("IsMoving", true);
+            player2Anim.SetBool("notMoving", false);
+        }
+        else
+        {
+            player2Anim.SetBool("notMoving", true);
+            player2Anim.SetBool("IsMoving", false);
         }
         if (isPlayer1Moving && !message2Displayed || isPlayer2Moving && !message2Displayed)
         {
@@ -253,7 +278,7 @@ public class PlayerMovement : MonoBehaviour
         if (menuManager.turnOverIsClicked)
         {
             menuManager.isButtonClicked = false;
-            menuManager.turnOverIsClicked = false;
+            //menuManager.turnOverIsClicked = false;
             SwitchTurns();
             if (!player1Turn)
             {
@@ -266,22 +291,23 @@ public class PlayerMovement : MonoBehaviour
                 player2Station.SetActive(true);
                 player1Station.SetActive(false);
             }
+            menuManager.turnOverIsClicked = false;
         }
 
 
         //PLAYER 1 DELIVERY
         if (Vector3.Distance(player1.transform.position, housePos1) < 0.4f  && !house1Delivered)
         {
-            
+            Debug.Log("Player 1 has made a delivery to house 1");
             cover1.SetActive(true);
             house1Delivered = true;
             player1Score++;
-            score1.text += player1Score;
+            score1.text = "Player 1 Score: " + player1Score;
         }
 
         if (Vector3.Distance(player1.transform.position, housePos2) < 0.4f && !house2Delivered)
         {
-            
+            Debug.Log("Player 1 has made a delivery to house 2");
             cover2.SetActive(true);
             house2Delivered = true;
             player1Score++;
@@ -290,7 +316,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Vector3.Distance(player1.transform.position, housePos3) < 0.4f && !house3Delivered)
         {
-            
+            Debug.Log("Player 1 has made a delivery to house 3");
             cover3.SetActive(true);
             house3Delivered = true;
             player1Score++;
@@ -299,7 +325,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Vector3.Distance(player1.transform.position, housePos4) < 0.4f && !house4Delivered)
         {
-            
+            Debug.Log("Player 1 has made a delivery to house 4");
             cover4.SetActive(true);
             house4Delivered = true;
             player1Score++;
@@ -308,16 +334,16 @@ public class PlayerMovement : MonoBehaviour
 
         if (Vector3.Distance(player1.transform.position, housePos5) < 0.4f && !house5Delivered)
         {
-            
-            cover5.SetActive(true);
+            Debug.Log("Player 1 has made a delivery to house 5");
             house5Delivered = true;
+            cover5.SetActive(true);
             player1Score++;
             score1.text = "Player 1 Score: " + player1Score;
         }
 
         if (Vector3.Distance(player1.transform.position, housePos6) < 0.4f && !house6Delivered)
         {
-            Debug.Log("Player 1 has made a delivery to house 1");
+            Debug.Log("Player 1 has made a delivery to house 6");
             cover6.SetActive(true);
             house6Delivered = true;
             player1Score++;
@@ -326,7 +352,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Vector3.Distance(player1.transform.position, housePos6) < 0.4f && !house6Delivered)
         {
-            Debug.Log("Player 1 has made a delivery to house 1");
+            Debug.Log("Player 1 has made a delivery to house 6");
             cover6.SetActive(true);
             house6Delivered = true;
             player1Score++;
@@ -335,7 +361,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Vector3.Distance(player1.transform.position, housePos7) < 0.4f && !house7Delivered)
         {
-            Debug.Log("Player 1 has made a delivery to house 1");
+            Debug.Log("Player 1 has made a delivery to house 7");
             cover7.SetActive(true);
             house7Delivered = true;
             player1Score++;
@@ -344,7 +370,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Vector3.Distance(player1.transform.position, housePos8) < 0.4f && !house8Delivered)
         {
-            Debug.Log("Player 1 has made a delivery to house 1");
+            Debug.Log("Player 1 has made a delivery to house 8");
             cover8.SetActive(true);
             house8Delivered = true;
             player1Score++;
@@ -353,7 +379,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Vector3.Distance(player1.transform.position, housePos9) < 0.4f && !house9Delivered)
         {
-            Debug.Log("Player 1 has made a delivery to house 1");
+            Debug.Log("Player 1 has made a delivery to house 9");
             cover9.SetActive(true);
             house9Delivered = true;
             player1Score++;
@@ -362,7 +388,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Vector3.Distance(player1.transform.position, housePos10) < 0.4f && !house10Delivered)
         {
-            Debug.Log("Player 1 has made a delivery to house 1");
+            Debug.Log("Player 1 has made a delivery to house 10");
             cover10.SetActive(true);
             house10Delivered = true;
             player1Score++;
@@ -371,26 +397,26 @@ public class PlayerMovement : MonoBehaviour
 
         if (Vector3.Distance(player1.transform.position, housePos11) < 0.4f && !house11Delivered)
         {
-            Debug.Log("Player 1 has made a delivery to house 1");
+            Debug.Log("Player 1 has made a delivery to house 11");
             cover11.SetActive(true);
             house11Delivered = true;
             player1Score++;
             score1.text = "Player 1 Score: " + player1Score;
         }
 
-        //PLAYER 2 DELIVERY
+        //PLAYER 2 DELIVERIES
         if (Vector3.Distance(player2.transform.position, housePos1) < 0.4f && !house1Delivered)
         {
-
+            Debug.Log("Player 2 has made a delivery to house 1");
             cover1.SetActive(true);
             house1Delivered = true;
             player2Score++;
-            score2.text += player2Score;
+            score2.text = "Player 2 Score: " + player2Score;
         }
 
         if (Vector3.Distance(player2.transform.position, housePos2) < 0.4f && !house2Delivered)
         {
-
+            Debug.Log("Player 2 has made a delivery to house 2");
             cover2.SetActive(true);
             house2Delivered = true;
             player2Score++;
@@ -399,7 +425,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Vector3.Distance(player2.transform.position, housePos3) < 0.4f && !house3Delivered)
         {
-
+            Debug.Log("Player 2 has made a delivery to house 3");
             cover3.SetActive(true);
             house3Delivered = true;
             player2Score++;
@@ -408,7 +434,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Vector3.Distance(player2.transform.position, housePos4) < 0.4f && !house4Delivered)
         {
-
+            Debug.Log("Player 2 has made a delivery to house 4");
             cover4.SetActive(true);
             house4Delivered = true;
             player2Score++;
@@ -417,7 +443,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Vector3.Distance(player2.transform.position, housePos5) < 0.4f && !house5Delivered)
         {
-
+            Debug.Log("Player 2 has made a delivery to house 5");
             cover5.SetActive(true);
             house5Delivered = true;
             player2Score++;
@@ -426,16 +452,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Vector3.Distance(player2.transform.position, housePos6) < 0.4f && !house6Delivered)
         {
-            Debug.Log("Player 1 has made a delivery to house 1");
-            cover6.SetActive(true);
-            house6Delivered = true;
-            player2Score++;
-            score2.text = "Player 2 Score: " + player2Score;
-        }
-
-        if (Vector3.Distance(player2.transform.position, housePos6) < 0.4f && !house6Delivered)
-        {
-            Debug.Log("Player 1 has made a delivery to house 1");
+            Debug.Log("Player 2 has made a delivery to house 6");
             cover6.SetActive(true);
             house6Delivered = true;
             player2Score++;
@@ -444,7 +461,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Vector3.Distance(player2.transform.position, housePos7) < 0.4f && !house7Delivered)
         {
-            Debug.Log("Player 1 has made a delivery to house 1");
+            Debug.Log("Player 2 has made a delivery to house 7");
             cover7.SetActive(true);
             house7Delivered = true;
             player2Score++;
@@ -453,7 +470,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Vector3.Distance(player2.transform.position, housePos8) < 0.4f && !house8Delivered)
         {
-            Debug.Log("Player 1 has made a delivery to house 1");
+            Debug.Log("Player 2 has made a delivery to house 8");
             cover8.SetActive(true);
             house8Delivered = true;
             player2Score++;
@@ -462,7 +479,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Vector3.Distance(player2.transform.position, housePos9) < 0.4f && !house9Delivered)
         {
-            Debug.Log("Player 1 has made a delivery to house 1");
+            Debug.Log("Player 2 has made a delivery to house 9");
             cover9.SetActive(true);
             house9Delivered = true;
             player2Score++;
@@ -471,7 +488,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Vector3.Distance(player2.transform.position, housePos10) < 0.4f && !house10Delivered)
         {
-            Debug.Log("Player 1 has made a delivery to house 1");
+            Debug.Log("Player 2 has made a delivery to house 10");
             cover10.SetActive(true);
             house10Delivered = true;
             player2Score++;
@@ -480,15 +497,16 @@ public class PlayerMovement : MonoBehaviour
 
         if (Vector3.Distance(player2.transform.position, housePos11) < 0.4f && !house11Delivered)
         {
-            Debug.Log("Player 1 has made a delivery to house 1");
+            Debug.Log("Player 2 has made a delivery to house 11");
             cover11.SetActive(true);
             house11Delivered = true;
             player2Score++;
             score2.text = "Player 2 Score: " + player2Score;
         }
 
+        //WIN CONDITION
         if (house1Delivered && house2Delivered && house3Delivered && house4Delivered && house5Delivered && house6Delivered && house7Delivered &&
-            house8Delivered && house9Delivered && house10Delivered && house11Delivered)
+                house8Delivered && house9Delivered && house10Delivered && house11Delivered)
         {
             if (player1Score > player2Score)
             {
@@ -513,9 +531,21 @@ public class PlayerMovement : MonoBehaviour
                     winMessage.text = "Player 2 Wins!!! \n Maybe Next Time Player 1...";
                 }
             }
-        }
+        }        
     }
 
+    Color ConvertToLinearSpace(Color color)
+    {
+        //make the colour lighter
+        if (QualitySettings.activeColorSpace == ColorSpace.Linear)
+        {
+            return color.gamma;
+        }
+        else
+        {
+            return color;
+        }
+    }
     private void MovePlayer1ToTile()
     {
         float lerpSpeed = 3.0f;
@@ -534,6 +564,7 @@ public class PlayerMovement : MonoBehaviour
             //Debug.Log("targetPos: " + targetPos + " world : " + targetPos);
             //Debug.Log("Player Position: " + player1.transform.position);
             //}
+            isPlayer1Moving = true;
 
             if (Vector3.Distance(player1.transform.position, targetPos) < 0.1f)
             {
@@ -541,11 +572,10 @@ public class PlayerMovement : MonoBehaviour
 
                 if (currentIndex >= clickedGridPoints.Count)
                 {
-                    player1Anim.SetBool("notMoving", true);
+                    isPlayer1Moving = false;
                     clickedGridPoints.Clear();
                     currentIndex = 0;
-                    isPlayer1Moving = false;
-                    
+
                 }
             }
         }
@@ -563,14 +593,14 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if (Vector3.Distance(player1.transform.position, housePos1) < 0.1f && !house1Delivered)
+        /*if (Vector3.Distance(player1.transform.position, housePos1) < 0.1f && !house1Delivered)
         {
             Debug.Log("Player 1 has made a delivery to house 1");
             cover1.SetActive(true);
             house1Delivered = true;
             player1Score++;
             score1.text = "Player 1 Score: " + player1Score;
-        }
+        }*/
     }
 
     private void MovePlayer2ToTile()
@@ -591,6 +621,7 @@ public class PlayerMovement : MonoBehaviour
             //Debug.Log("targetPos: " + targetPos + " world : " + targetPos);
             //Debug.Log("Player Position: " + player1.transform.position);
             //}
+            isPlayer2Moving = true;
 
             if (Vector3.Distance(player2.transform.position, targetPos) < 0.1f)
             {
@@ -601,7 +632,6 @@ public class PlayerMovement : MonoBehaviour
                     clickedGridPoints.Clear();
                     currentIndex = 0;
                     isPlayer2Moving = false;
-                    player2Anim.SetBool("notMoving", true);
                     /*player2TurnEnd = true;
                     if (menuManager.turnOverIsClicked)
                     {
@@ -624,7 +654,6 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
-
     public void Reset()
     {
         resetClicked = true;
@@ -632,11 +661,11 @@ public class PlayerMovement : MonoBehaviour
         {
             menuManager.isButtonClicked = false;
             resetClicked = true;
-            StartCoroutine(ActivateErrorMessage(errorPanel, 5.0f));
             clickedGridPoints.Clear();
             currentIndex = 0;
             isPlayer1Moving = false;
             isPlayer2Moving = false;
+            ResetColors();
         }
 
     }

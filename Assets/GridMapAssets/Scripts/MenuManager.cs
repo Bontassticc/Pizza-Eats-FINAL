@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class MenuManager : MonoBehaviour
 {
     public static MenuManager Instance;
-    RandomNumberGenerator ndScript;
+    //RandomNumberGenerator ndScript;
     public int movementDiceRoll = 0;
 
     public Text displayMovementRoll;
@@ -25,15 +25,18 @@ public class MenuManager : MonoBehaviour
     public GameObject pizzaStation2;
     public GameObject player1;
     public GameObject player2;
+    public GameObject panel;
+
+    PlayerMovement movementScript;
 
     void Awake()
     {
         Instance = this;
     }
 
-    public void Start()
+    private void Start()
     {
-        //ndScript = FindObjectOfType<RandomNumberGenerator
+        movementScript = FindAnyObjectByType<PlayerMovement>();
     }
 
     private void Update()
@@ -59,8 +62,19 @@ public class MenuManager : MonoBehaviour
         movement.SetActive(false);
         player1.SetActive(false);
         player2.SetActive(false);
-        
+        panel.SetActive(false);
 
+        /*if (movementScript.player1Turn)
+        {
+            pizzaStation1.SetActive(true);
+            pizzaStation2.SetActive(false);
+        }
+        else
+        {
+            pizzaStation2.SetActive(true);
+            pizzaStation1.SetActive(false);
+        }*/
+        
     }
 
     public void GenerateMovement()
