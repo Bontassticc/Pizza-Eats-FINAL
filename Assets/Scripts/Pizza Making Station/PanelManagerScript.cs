@@ -17,12 +17,14 @@ public class PanelManagerScript : MonoBehaviour
 
     public GameObject stationCanvas;
 
+    //public bool isMapActive;
 
     public void GridMap()
     {
         if (grid != null)
         {
             bool isActive = grid.activeSelf;
+            //isMapActive = isActive;
 
             grid.SetActive(!isActive);
             player1.SetActive(!isActive);
