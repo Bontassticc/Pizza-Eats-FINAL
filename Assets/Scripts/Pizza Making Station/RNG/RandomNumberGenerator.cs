@@ -14,7 +14,7 @@ public class RandomNumberGenerator : MonoBehaviour
     public GameObject Bowl6;
     public GameObject Bowl7;
     public GameObject Bowl8;
-
+    
     public Text randomNumberText1;
     public Text randomNumberText2;
     public Text randomNumberText3;
@@ -23,10 +23,7 @@ public class RandomNumberGenerator : MonoBehaviour
     public int randomNumber2;
     public int randomNumber3;
 
-    public void Start()
-    {
-       Bowl1.SetActive(true);
-    }
+   
     public void GenerateRandomNumber()
     {
         randomNumber1 = Random.Range(1, 9);
@@ -131,7 +128,7 @@ public class RandomNumberGenerator : MonoBehaviour
             Bowl7.SetActive(true);
             Bowl8.SetActive(false);
         }
-
+       
         //randomNumber2
         if (randomNumber2 == 1)
         {
@@ -314,7 +311,7 @@ public class RandomNumberGenerator : MonoBehaviour
             Bowl8.SetActive(false);
         }
 
-
+       
 
 
     }
