@@ -18,6 +18,8 @@ TagManager:
   - Slice8
   - Ingredient
   - Tile
+  - BowlSlot
+  - PizzaSlot
   layers:
   - Default
   - TransparentFX
