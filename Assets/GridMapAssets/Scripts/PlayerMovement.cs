@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
@@ -15,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
 
     public Tilemap tilemap;
     public List<Vector3> clickedGridPoints = new();
-    private Dictionary<Vector3Int, Color> originalTileColors = new Dictionary<Vector3Int, Color>();
+    private readonly Dictionary<Vector3Int, Color> originalTileColors = new();
 
     Vector3 targetPos;
 
@@ -23,8 +24,8 @@ public class PlayerMovement : MonoBehaviour
     //PanelManagerScript panelManager;
     //RandomNumberGenerator rndGen;
     int currentIndex = 0;
-    bool isPlayer1Moving;
-    bool isPlayer2Moving;
+    public bool isPlayer1Moving;
+    public bool isPlayer2Moving;
 
     [SerializeField]
     Text errorMessage;
@@ -45,10 +46,11 @@ public class PlayerMovement : MonoBehaviour
     GameObject stationCanvas;
     [SerializeField]
     GameObject grid;
- 
+
     bool message2Displayed = false;
     bool message3Displayed = false;
     bool resetClicked = false;
+    bool right = true;
 
     Vector3 housePos1;
     Vector3 housePos2;
@@ -80,7 +82,7 @@ public class PlayerMovement : MonoBehaviour
     bool house4Delivered = false;
     bool house5Delivered = false;
     bool house6Delivered = false;
-    bool house7Delivered = false;   
+    bool house7Delivered = false;
     bool house8Delivered = false;
     bool house9Delivered = false;
     bool house10Delivered = false;
@@ -93,6 +95,8 @@ public class PlayerMovement : MonoBehaviour
     public bool player1Turn = true;
     public GameObject player1Station;
     public GameObject player2Station;
+    public GameObject player1Transform;
+    public GameObject player2Transform;
     private Color newColor;
     void Start()
     {
@@ -128,11 +132,11 @@ public class PlayerMovement : MonoBehaviour
     {
         // Get all the positions of the tiles in the Tilemap
         BoundsInt bounds = tilemap.cellBounds;
-        TileBase[] allTiles = tilemap.GetTilesBlock(bounds);
+        _ = tilemap.GetTilesBlock(bounds);
 
         foreach (var pos in bounds.allPositionsWithin)
         {
-            Vector3Int localPlace = new Vector3Int(pos.x, pos.y, pos.z);
+            Vector3Int localPlace = new(pos.x, pos.y, pos.z);
             if (!tilemap.HasTile(localPlace)) continue;
 
             // Store the original color of each tile if it's not already stored
@@ -154,10 +158,13 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+            //store the grid cell position of a clicked tile so that we can perform logic to check if it is within rules..
             Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector3Int cellPos = tilemap.WorldToCell(mouseWorldPos);
             TileBase clickedTile = tilemap.GetTile(cellPos);
             Vector3 tileWorldPos = tilemap.GetCellCenterWorld(cellPos);
+
+            //logic to check if the selected tiles are within game rules
             if (clickedTile != null && !menuManager.isButtonClicked)
             {
                 if (clickedGridPoints.Count == 0)
@@ -189,6 +196,7 @@ public class PlayerMovement : MonoBehaviour
                         }
                     }
 
+                    //is the first tile clicked close enough to the player?
                     float distanceToPlayer2 = Vector3.Distance(player2.transform.position, tileWorldPos);
                     if (distanceToPlayer2 <= 1.5f && !player1Turn)
                     {
@@ -227,19 +235,31 @@ public class PlayerMovement : MonoBehaviour
                     }
                     else
                     {
-                        clickedGridPoints.Add(tileWorldPos);
-                        //highlight grid cells
-                        tilemap.SetTileFlags(cellPos, TileFlags.None);
-                        tilemap.SetColor(cellPos, ConvertToLinearSpace(newColor));
+                        //check to see if the tiles are all next to the previous tile the player has selected
+                        float distanceToPreviousTile = Vector3.Distance(clickedGridPoints[^1], tileWorldPos);
+                        if (distanceToPreviousTile < 1.5f)
+                        {
+                            clickedGridPoints.Add(tileWorldPos);
+                            //highlight grid cells
+                            tilemap.SetTileFlags(cellPos, TileFlags.None);
+                            tilemap.SetColor(cellPos, ConvertToLinearSpace(newColor));
+                        }
+                        else
+                        {
+                            errorMessage.text = "The grid cells you have selected all have to be next to each other!";
+                            StartCoroutine(ActivateErrorMessage(errorPanel, 5.0f));
+                        }
                     }
+
                 }
             }
         }
 
+        //if confirm is clicked, move player 1 and activate animations accordingly
         if (menuManager.isButtonClicked && player1Turn)
         {
             MovePlayer1ToTile();
-            //isPlayer1Moving = true;
+            //stop highlighting the path the player took
             ResetColors();
         }
         if (isPlayer1Moving)
@@ -253,9 +273,11 @@ public class PlayerMovement : MonoBehaviour
             player1Anim.SetBool("IsMoving", false);
         }
 
+        //if confirm is clicked, move player 2 and activate animations accordingly
         if (menuManager.isButtonClicked && !player1Turn)
         {
             MovePlayer2ToTile();
+            //stop highlighting the path the player took
             ResetColors();
             //isPlayer2Moving = true;
         }
@@ -269,12 +291,16 @@ public class PlayerMovement : MonoBehaviour
             player2Anim.SetBool("notMoving", true);
             player2Anim.SetBool("IsMoving", false);
         }
+
+        //remind player to click on turn over button when they are done moving 
         if (isPlayer1Moving && !message2Displayed || isPlayer2Moving && !message2Displayed)
         {
             instructions.text = "When your turn is over and your player has moved, click on the 'Turn Over' button";
             StartCoroutine(ActivateInstructionMessage(instructionPanel, 4.0f));
             message2Displayed = true;
         }
+
+        //perform logic when turn over button is clicked to go to the correct station according to which player's turn it is
         if (menuManager.turnOverIsClicked)
         {
             menuManager.isButtonClicked = false;
@@ -296,7 +322,7 @@ public class PlayerMovement : MonoBehaviour
 
 
         //PLAYER 1 DELIVERY
-        if (Vector3.Distance(player1.transform.position, housePos1) < 0.4f  && !house1Delivered)
+        if (Vector3.Distance(player1.transform.position, housePos1) < 0.4f && !house1Delivered)
         {
             Debug.Log("Player 1 has made a delivery to house 1");
             cover1.SetActive(true);
@@ -531,12 +557,13 @@ public class PlayerMovement : MonoBehaviour
                     winMessage.text = "Player 2 Wins!!! \n Maybe Next Time Player 1...";
                 }
             }
-        }        
+        }
     }
+
 
     Color ConvertToLinearSpace(Color color)
     {
-        //make the colour lighter
+        //make the colour lighter by converting it to linear space since the game is not in gamma
         if (QualitySettings.activeColorSpace == ColorSpace.Linear)
         {
             return color.gamma;
@@ -552,35 +579,50 @@ public class PlayerMovement : MonoBehaviour
 
         if (clickedGridPoints.Count > 0 && clickedGridPoints.Count <= menuManager.movementDiceRoll)
         {
-            //if (Vector3.Distance(player1.transform.position, targetPos) > 1.0f)
-            //{
+            //set target position according to the element that matches the current index in the list.
+            //this is so that the we can go through all the elements in the list by increasing the current index everytime we lerp to a pos.
             targetPos = clickedGridPoints.ElementAt(currentIndex);
             //Debug.Log(clickedGridPoints[currentIndex]);
-
 
             //move player to destination by lerping
             player1.transform.position = Vector3.Lerp(player1.transform.position, targetPos, lerpSpeed * Time.deltaTime);
 
+            //direction rotation
+            if (targetPos.x < player1Transform.transform.position.x && right)
+            {
+                FlipPlayer1();
+            }
+            if (targetPos.x > player1Transform.transform.position.x && !right)
+            {
+                FlipPlayer1();
+            }
+            /*Vector3 direction = targetPos - Camera.main.WorldToScreenPoint(player1.transform.position);
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);*/
+
+
             //Debug.Log("targetPos: " + targetPos + " world : " + targetPos);
             //Debug.Log("Player Position: " + player1.transform.position);
-            //}
             isPlayer1Moving = true;
 
+            //if the player arrives at their destination, increase the currentIndex
             if (Vector3.Distance(player1.transform.position, targetPos) < 0.1f)
             {
                 currentIndex++;
 
+                //if the current index is equal to the number of elements in the list, set it back to zero and stop the player from moving.
                 if (currentIndex >= clickedGridPoints.Count)
                 {
                     isPlayer1Moving = false;
                     clickedGridPoints.Clear();
                     currentIndex = 0;
-
                 }
             }
         }
         else
         {
+            //if the number of tiles the player has selected exceeds the value in the movement dice roll,
+            //display error message and let player select tiles again.
             if (clickedGridPoints.Count > menuManager.movementDiceRoll)
             {
                 errorMessage.text = "The number of tiles you have clicked exceeds the value in the movement dice roll, " +
@@ -592,35 +634,34 @@ public class PlayerMovement : MonoBehaviour
                 isPlayer1Moving = false;
             }
         }
-
-        /*if (Vector3.Distance(player1.transform.position, housePos1) < 0.1f && !house1Delivered)
-        {
-            Debug.Log("Player 1 has made a delivery to house 1");
-            cover1.SetActive(true);
-            house1Delivered = true;
-            player1Score++;
-            score1.text = "Player 1 Score: " + player1Score;
-        }*/
     }
+
 
     private void MovePlayer2ToTile()
     {
+        //Perform previous logic to move player 2
         float lerpSpeed = 3.0f;
 
         if (clickedGridPoints.Count > 0 && clickedGridPoints.Count <= menuManager.movementDiceRoll)
         {
-            //if (Vector3.Distance(player2.transform.position, targetPos) > 1.0f)
-            //{
             targetPos = clickedGridPoints.ElementAt(currentIndex);
             //Debug.Log(clickedGridPoints[currentIndex]);
-
 
             //move player to destination by lerping
             player2.transform.position = Vector3.Lerp(player2.transform.position, targetPos, lerpSpeed * Time.deltaTime);
 
+            //direction rotation
+            if (targetPos.x < player2Transform.transform.position.x && right)
+            {
+                FlipPlayer2();
+            }
+            if (targetPos.x > player2Transform.transform.position.x && !right)
+            {
+                FlipPlayer2();
+            }
             //Debug.Log("targetPos: " + targetPos + " world : " + targetPos);
-            //Debug.Log("Player Position: " + player1.transform.position);
-            //}
+            //Debug.Log("Player Position: " + player1.transform.position;
+
             isPlayer2Moving = true;
 
             if (Vector3.Distance(player2.transform.position, targetPos) < 0.1f)
@@ -632,11 +673,6 @@ public class PlayerMovement : MonoBehaviour
                     clickedGridPoints.Clear();
                     currentIndex = 0;
                     isPlayer2Moving = false;
-                    /*player2TurnEnd = true;
-                    if (menuManager.turnOverIsClicked)
-                    {
-                        GameManager.Instance.UpdateGameState(GameState.Player1Turn);
-                    }*/
                 }
             }
         }
@@ -656,6 +692,7 @@ public class PlayerMovement : MonoBehaviour
     }
     public void Reset()
     {
+        //Perfrorm logic to reset the tiles clicked by the player when they click the reset button.
         resetClicked = true;
         if (resetClicked)
         {
@@ -669,13 +706,29 @@ public class PlayerMovement : MonoBehaviour
         }
 
     }
+
+    private void FlipPlayer1()
+    {
+        //flip function if the player is not facing the direction that corresponds with the target position
+        right = !right;
+        player1Transform.transform.Rotate(0.0f, 180.0f, 0.0f);
+    }
+    private void FlipPlayer2()
+    {
+        //flip function if the player is not facing the direction that corresponds with the target position
+        right = !right;
+        player2Transform.transform.Rotate(0.0f, 180.0f, 0.0f);
+    }
+
     public void SwitchTurns()
     {
+        //when called, this method switches the player turns
         player1Turn = !player1Turn;
     }
 
     IEnumerator ActivateErrorMessage(GameObject gameObject, float duration)
     {
+        //when called, this method activates a game object for a certain period of time.
         gameObject.SetActive(true);
         yield return new WaitForSeconds(duration);
         gameObject.SetActive(false);
@@ -683,6 +736,7 @@ public class PlayerMovement : MonoBehaviour
 
     IEnumerator ActivateInstructionMessage(GameObject gameObject, float duration)
     {
+        //when called, this method activates a game object for a certain period of time.
         gameObject.SetActive(true);
         yield return new WaitForSeconds(duration);
         gameObject.SetActive(false);

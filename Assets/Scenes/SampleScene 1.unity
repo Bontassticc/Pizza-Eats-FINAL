@@ -2599,6 +2599,8 @@ MonoBehaviour:
   player2Anim: {fileID: 1173424193}
   tilemap: {fileID: 66353935}
   clickedGridPoints: []
+  isPlayer1Moving: 0
+  isPlayer2Moving: 0
   errorMessage: {fileID: 282904781}
   errorPanel: {fileID: 374573552}
   winMessage: {fileID: 477112203}
@@ -2624,6 +2626,8 @@ MonoBehaviour:
   player1Turn: 1
   player1Station: {fileID: 1770129936}
   player2Station: {fileID: 1816130601}
+  player1Transform: {fileID: 2143441521}
+  player2Transform: {fileID: 1140425985}
 --- !u!1 &66974740
 GameObject:
   m_ObjectHideFlags: 0
@@ -4039,25 +4043,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7e047367db7cef43aa174d573f5ca93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  snapPosition:
-  - {fileID: 1702162573}
-  - {fileID: 670626197}
-  - {fileID: 741801799}
-  - {fileID: 954491514}
-  - {fileID: 1527983022}
-  - {fileID: 36781728}
-  - {fileID: 421637358}
-  - {fileID: 2040747746}
-  draggableObjects:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  snapRange: 0.5
 --- !u!4 &133448622
 Transform:
   m_ObjectHideFlags: 0
@@ -7438,25 +7423,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7e047367db7cef43aa174d573f5ca93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  snapPosition:
-  - {fileID: 670536299}
-  - {fileID: 794368322}
-  - {fileID: 810263664}
-  - {fileID: 1053106119}
-  - {fileID: 123861241}
-  - {fileID: 1920843282}
-  - {fileID: 1009140958}
-  - {fileID: 1556920873}
-  draggableObjects:
-  - {fileID: 1571101064}
-  - {fileID: 1767176241}
-  - {fileID: 1932687108}
-  - {fileID: 1428854876}
-  - {fileID: 1887996341}
-  - {fileID: 932556089}
-  - {fileID: 501709623}
-  - {fileID: 608184551}
-  snapRange: 0.5
 --- !u!1 &355992410
 GameObject:
   m_ObjectHideFlags: 0
@@ -9659,10 +9625,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d30ad64daffff343a044ba767de7191, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDragged: 0
-  mouseDragStartPosition: {x: 0, y: 0, z: 0}
-  spriteDragStartPosition: {x: 0, y: 0, z: 0}
-  isSnapped: 0
 --- !u!61 &501709624
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11256,10 +11218,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d30ad64daffff343a044ba767de7191, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDragged: 0
-  mouseDragStartPosition: {x: 0, y: 0, z: 0}
-  spriteDragStartPosition: {x: 0, y: 0, z: 0}
-  isSnapped: 0
 --- !u!61 &608184552
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -16132,10 +16090,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d30ad64daffff343a044ba767de7191, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDragged: 0
-  mouseDragStartPosition: {x: 0, y: 0, z: 0}
-  spriteDragStartPosition: {x: 0, y: 0, z: 0}
-  isSnapped: 0
 --- !u!61 &932556090
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -20947,6 +20901,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1138219471}
   m_CullTransparentMesh: 1
+--- !u!1 &1140425985 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 167908, guid: 86665e566268cb5469dbb3747ca2839d, type: 3}
+  m_PrefabInstance: {fileID: 235501616}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1143803812
 GameObject:
   m_ObjectHideFlags: 0
@@ -24797,10 +24756,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d30ad64daffff343a044ba767de7191, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDragged: 0
-  mouseDragStartPosition: {x: 0, y: 0, z: 0}
-  spriteDragStartPosition: {x: 0, y: 0, z: 0}
-  isSnapped: 0
 --- !u!61 &1428854877
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -26936,10 +26891,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d30ad64daffff343a044ba767de7191, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDragged: 0
-  mouseDragStartPosition: {x: 0, y: 0, z: 0}
-  spriteDragStartPosition: {x: 0, y: 0, z: 0}
-  isSnapped: 0
 --- !u!61 &1571101065
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -29053,10 +29004,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d30ad64daffff343a044ba767de7191, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDragged: 0
-  mouseDragStartPosition: {x: 0, y: 0, z: 0}
-  spriteDragStartPosition: {x: 0, y: 0, z: 0}
-  isSnapped: 0
 --- !u!61 &1767176242
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -31138,10 +31085,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d30ad64daffff343a044ba767de7191, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDragged: 0
-  mouseDragStartPosition: {x: 0, y: 0, z: 0}
-  spriteDragStartPosition: {x: 0, y: 0, z: 0}
-  isSnapped: 0
 --- !u!61 &1887996342
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -32137,10 +32080,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d30ad64daffff343a044ba767de7191, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDragged: 0
-  mouseDragStartPosition: {x: 0, y: 0, z: 0}
-  spriteDragStartPosition: {x: 0, y: 0, z: 0}
-  isSnapped: 0
 --- !u!61 &1932687109
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -35774,6 +35713,11 @@ Transform:
   - {fileID: 1568898079}
   m_Father: {fileID: 1797349537}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2143441521 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 167908, guid: 86665e566268cb5469dbb3747ca2839d, type: 3}
+  m_PrefabInstance: {fileID: 1811868468}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2143902794
 PrefabInstance:
   m_ObjectHideFlags: 0
