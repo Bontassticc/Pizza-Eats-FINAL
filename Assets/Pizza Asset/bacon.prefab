@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d93d1329eeba0e5409081c0a26477671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slotSize: 1
+  snapTag: Block
 --- !u!58 &5193025589047828825
 CircleCollider2D:
   m_ObjectHideFlags: 0

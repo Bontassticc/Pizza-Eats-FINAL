@@ -4,75 +4,61 @@ using UnityEngine;
 
 
 
+
 public class DragAndDrop : MonoBehaviour
 {
     private bool isDragging = false;
     private Vector3 offset;
-    private Vector2 initialPosition;
+    public string snapTag;
 
-    //  inventory slot size
-    public float slotSize = 1.0f;
-    private Vector2 Slot = new Vector2(0.0f, 0.0f); // Offset of the inventory grid
-
-    public void Start()
+    private void OnMouseDown()
     {
+        isDragging = true;
+        offset = gameObject.transform.position - GetMouseWorldPosition();
+    }
 
+    private void OnMouseUp()
+    {
+        isDragging = false;
+        SnapToObject();
     }
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-            if (hit.collider != null && hit.collider.gameObject == gameObject)
-            {
-                // Calculate the offset between the object's position and the mouse position
-                offset = gameObject.transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                isDragging = true;
-                initialPosition = transform.position;
-            }
-        }
-
-        if (Input.GetMouseButtonUp(0))
-        {
-            if (isDragging)
-            {
-                SnapToInventorySlot();
-                isDragging = false;
-            }
-        }
-
         if (isDragging)
         {
-            // Convert the mouse position to world position and add the offset
-            Vector3 newPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition) + offset;
-
-            // Update the object's position
+            Vector3 newPosition = GetMouseWorldPosition() + offset;
             transform.position = new Vector3(newPosition.x, newPosition.y, transform.position.z);
         }
     }
 
-    public void SnapToInventorySlot()
+    private void SnapToObject()
     {
-        Collider2D[] colliders = Physics2D.OverlapBoxAll(transform.position, transform.localScale, 0);
-        foreach (Collider2D collider in colliders)
-        {
-            if (collider.CompareTag("PizzaSlot"))
-            {
-                // Snap the item to the center of the collided chest slot
-                transform.position = collider.bounds.center;
-                return;
-            }
+        GameObject[] snapObjects = GameObject.FindGameObjectsWithTag("Block");
+        float shortestDistance = Mathf.Infinity;
+        GameObject closestObject = null;
 
-            if (collider.CompareTag("BowlSlot"))
+        foreach (GameObject obj in snapObjects)
+        {
+            float distance = Vector3.Distance(transform.position, obj.transform.position);
+            if (distance < shortestDistance)
             {
-                // Snap the item to the center of the collided chest slot
-                transform.position = collider.bounds.center;
-                return;
+                shortestDistance = distance;
+                closestObject = obj;
             }
         }
 
-        // Snap back to the initial position if no collision with chest slots
-        transform.position = initialPosition;
+        if (closestObject != null)
+        {
+            transform.position = closestObject.transform.position;
+        }
     }
+
+    private Vector3 GetMouseWorldPosition()
+    {
+        Vector3 mousePosition = Input.mousePosition;
+        mousePosition.z = Camera.main.nearClipPlane;
+        return Camera.main.ScreenToWorldPoint(mousePosition);
+    }
+
 }
