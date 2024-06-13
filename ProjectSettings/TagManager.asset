@@ -20,6 +20,7 @@ TagManager:
   - Tile
   - BowlSlot
   - PizzaSlot
+  - Block
   layers:
   - Default
   - TransparentFX
