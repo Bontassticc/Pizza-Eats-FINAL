@@ -18,7 +18,7 @@ public class Player1BuyButtonManager : MonoBehaviour
 
     public Transform MushroomSlot, PineAppleSlot, BeefSlot, CheeseSlot, BaconSlot, ChickenSlot, PeppersSlot, PepperoniSlot;
 
-    public Vector3 sizes = new Vector3(70f, 70f, 0);
+    public Vector3 sizes = new Vector3(200f, 200f, 0);
 
 
     bool pineappleBought;
@@ -48,9 +48,9 @@ public class Player1BuyButtonManager : MonoBehaviour
             for (int i = 0; i < 10; i++)
             {
                 GameObject CloneObject = Instantiate(Pineapple, PineAppleSlot.position, Quaternion.identity, PineAppleSlot);
-                CloneObject.transform.localScale = sizes;
+                CloneObject.transform.localScale = sizes ;
 
-                CloneObject.transform.localScale = sizes;
+                CloneObject.transform.localScale = sizes ;
 
                 if(i == 9)
                 {

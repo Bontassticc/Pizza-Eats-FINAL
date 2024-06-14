@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1954362711730845185}
   - component: {fileID: 7082277282969684376}
   - component: {fileID: 828779597280639825}
-  - component: {fileID: 1840043284335281970}
+  - component: {fileID: 1642382752101146054}
   m_Layer: 0
   m_Name: Pineapple slice
   m_TagString: Untagged
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5d2139af500f7964ca6c4b9f32d71130, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6b580fae940b36e409f482da8b549fa3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -99,8 +99,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   snapTag: Block
---- !u!61 &1840043284335281970
-BoxCollider2D:
+--- !u!58 &1642382752101146054
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -131,16 +131,6 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 19.2, y: 10.8}
-    newSize: {x: 19.2, y: 10.8}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Offset: {x: -1.1282277, y: -1.0793173}
   serializedVersion: 2
-  m_Size: {x: 19.2, y: 10.8}
-  m_EdgeRadius: 0
+  m_Radius: 8.923636
