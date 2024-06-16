@@ -36,6 +36,7 @@ public class RandomNumberGenerator : MonoBehaviour
     public Text randomNumberText1;
     public Text randomNumberText2;
     public Text randomNumberText3;
+    public Text moveDisplay;
 
     public int randomNumber1;
     public int randomNumber2;
@@ -101,6 +102,7 @@ public class RandomNumberGenerator : MonoBehaviour
         randomNumberText1.text = randomNumber1.ToString();
         randomNumberText2.text = randomNumber2.ToString();
         randomNumberText3.text = randomNumber3.ToString();
+        moveDisplay.text = "Moves: \n" + randomNumber3.ToString();
 
         //This loop sets all the panels active for the bowls.
         //It loops through the "bowls" list
@@ -133,13 +135,13 @@ public class RandomNumberGenerator : MonoBehaviour
                 Ps[i].SetActive(false);
             }
 
-            if (bowls[i].transform.name.Contains(randomNumberText3.text))
+            /*if (bowls[i].transform.name.Contains(randomNumberText3.text))
             {
                 bowls[i].SetActive(false);
                 pizzas[i].SetActive(false);
                 Bs[i].SetActive(false);
                 Ps[i].SetActive(false);
-            }
+            }*/
         }
     }
 }

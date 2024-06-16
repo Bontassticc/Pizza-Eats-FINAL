@@ -21,6 +21,16 @@ TagManager:
   - BowlSlot
   - PizzaSlot
   - Block
+  - Bacon
+  - Beef
+  - Chicken
+  - Pineapple
+  - Sauce
+  - Peppers
+  - Mushrooms
+  - Cheese
+  - HotBar1
+  - HotBar2
   layers:
   - Default
   - TransparentFX

@@ -22,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
 
     MenuManager menuManager;
     //PanelManagerScript panelManager;
-    //RandomNumberGenerator rndGen;
+    public RandomNumberGenerator rndGen;
     int currentIndex = 0;
     public bool isPlayer1Moving;
     public bool isPlayer2Moving;
@@ -76,20 +76,20 @@ public class PlayerMovement : MonoBehaviour
     public GameObject cover10;
     public GameObject cover11;
 
-    bool house1Delivered = false;
-    bool house2Delivered = false;
-    bool house3Delivered = false;
-    bool house4Delivered = false;
-    bool house5Delivered = false;
-    bool house6Delivered = false;
-    bool house7Delivered = false;
-    bool house8Delivered = false;
-    bool house9Delivered = false;
-    bool house10Delivered = false;
-    bool house11Delivered = false;
+    public bool house1Delivered = false;
+    public bool house2Delivered = false;
+    public bool house3Delivered = false;
+    public bool house4Delivered = false;
+    public bool house5Delivered = false;
+    public bool house6Delivered = false;
+    public bool house7Delivered = false;
+    public bool house8Delivered = false;
+    public bool house9Delivered = false;
+    public bool house10Delivered = false;
+    public bool house11Delivered = false;
 
-    int player1Score = 0;
-    int player2Score = 0;
+    public int player1Score = 0;
+    public int player2Score = 0;
     public Text score1;
     public Text score2;
     public bool player1Turn = true;
@@ -102,7 +102,7 @@ public class PlayerMovement : MonoBehaviour
     {
         //isConfirmed = false;
         menuManager = FindObjectOfType<MenuManager>();
-        //rndGen = FindObjectOfType<RandomNumberGenerator>();
+        rndGen = FindObjectOfType<RandomNumberGenerator>();
         //panelManager = FindAnyObjectByType<PanelManagerScript>();
         isPlayer1Moving = false;
         isPlayer2Moving = false;
@@ -327,8 +327,15 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("Player 1 has made a delivery to house 1");
             cover1.SetActive(true);
             house1Delivered = true;
-            player1Score++;
-            score1.text = "Player 1 Score: " + player1Score;
+            //player1Score++;
+            //score1.text = "Player 1 Score: " + player1Score;
+            if (house1Delivered)
+            {
+                clickedGridPoints.Clear();
+                currentIndex = 0;
+                isPlayer1Moving = false;
+                ResetColors();
+            }
         }
 
         if (Vector3.Distance(player1.transform.position, housePos2) < 0.4f && !house2Delivered)
@@ -336,8 +343,15 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("Player 1 has made a delivery to house 2");
             cover2.SetActive(true);
             house2Delivered = true;
-            player1Score++;
-            score1.text = "Player 1 Score: " + player1Score;
+            //player1Score++;
+            //score1.text = "Player 1 Score: " + player1Score;
+            if (house2Delivered)
+            {
+                clickedGridPoints.Clear();
+                currentIndex = 0;
+                isPlayer1Moving = false;
+                ResetColors();
+            }
         }
 
         if (Vector3.Distance(player1.transform.position, housePos3) < 0.4f && !house3Delivered)
@@ -345,8 +359,15 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("Player 1 has made a delivery to house 3");
             cover3.SetActive(true);
             house3Delivered = true;
-            player1Score++;
-            score1.text = "Player 1 Score: " + player1Score;
+            //player1Score++;
+            //score1.text = "Player 1 Score: " + player1Score;
+            if (house3Delivered)
+            {
+                clickedGridPoints.Clear();
+                currentIndex = 0;
+                isPlayer1Moving = false;
+                ResetColors();
+            }
         }
 
         if (Vector3.Distance(player1.transform.position, housePos4) < 0.4f && !house4Delivered)
@@ -356,6 +377,13 @@ public class PlayerMovement : MonoBehaviour
             house4Delivered = true;
             player1Score++;
             score1.text = "Player 1 Score: " + player1Score;
+            if (house4Delivered)
+            {
+                clickedGridPoints.Clear();
+                currentIndex = 0;
+                isPlayer1Moving = false;
+                ResetColors();
+            }
         }
 
         if (Vector3.Distance(player1.transform.position, housePos5) < 0.4f && !house5Delivered)
@@ -363,8 +391,15 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("Player 1 has made a delivery to house 5");
             house5Delivered = true;
             cover5.SetActive(true);
-            player1Score++;
-            score1.text = "Player 1 Score: " + player1Score;
+            if (house5Delivered)
+            {
+                clickedGridPoints.Clear();
+                currentIndex = 0;
+                isPlayer1Moving = false;
+                ResetColors();
+            }
+            //player1Score++;
+            //score1.text = "Player 1 Score: " + player1Score;
         }
 
         if (Vector3.Distance(player1.transform.position, housePos6) < 0.4f && !house6Delivered)
@@ -372,17 +407,15 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("Player 1 has made a delivery to house 6");
             cover6.SetActive(true);
             house6Delivered = true;
-            player1Score++;
-            score1.text = "Player 1 Score: " + player1Score;
-        }
-
-        if (Vector3.Distance(player1.transform.position, housePos6) < 0.4f && !house6Delivered)
-        {
-            Debug.Log("Player 1 has made a delivery to house 6");
-            cover6.SetActive(true);
-            house6Delivered = true;
-            player1Score++;
-            score1.text = "Player 1 Score: " + player1Score;
+            //player1Score++;
+            //score1.text = "Player 1 Score: " + player1Score;
+            if (house6Delivered)
+            {
+                clickedGridPoints.Clear();
+                currentIndex = 0;
+                isPlayer1Moving = false;
+                ResetColors();
+            }
         }
 
         if (Vector3.Distance(player1.transform.position, housePos7) < 0.4f && !house7Delivered)
@@ -390,8 +423,15 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("Player 1 has made a delivery to house 7");
             cover7.SetActive(true);
             house7Delivered = true;
-            player1Score++;
-            score1.text = "Player 1 Score: " + player1Score;
+            //player1Score++;
+            //score1.text = "Player 1 Score: " + player1Score;
+            if (house7Delivered)
+            {
+                clickedGridPoints.Clear();
+                currentIndex = 0;
+                isPlayer1Moving = false;
+                ResetColors();
+            }
         }
 
         if (Vector3.Distance(player1.transform.position, housePos8) < 0.4f && !house8Delivered)
@@ -399,8 +439,15 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("Player 1 has made a delivery to house 8");
             cover8.SetActive(true);
             house8Delivered = true;
-            player1Score++;
-            score1.text = "Player 1 Score: " + player1Score;
+            //player1Score++;
+            //score1.text = "Player 1 Score: " + player1Score;
+            if (house8Delivered)
+            {
+                clickedGridPoints.Clear();
+                currentIndex = 0;
+                isPlayer1Moving = false;
+                ResetColors();
+            }
         }
 
         if (Vector3.Distance(player1.transform.position, housePos9) < 0.4f && !house9Delivered)
@@ -410,6 +457,13 @@ public class PlayerMovement : MonoBehaviour
             house9Delivered = true;
             player1Score++;
             score1.text = "Player 1 Score: " + player1Score;
+            if (house9Delivered)
+            {
+                clickedGridPoints.Clear();
+                currentIndex = 0;
+                isPlayer1Moving = false;
+                ResetColors();
+            }
         }
 
         if (Vector3.Distance(player1.transform.position, housePos10) < 0.4f && !house10Delivered)
@@ -419,6 +473,13 @@ public class PlayerMovement : MonoBehaviour
             house10Delivered = true;
             player1Score++;
             score1.text = "Player 1 Score: " + player1Score;
+            if (house10Delivered)
+            {
+                clickedGridPoints.Clear();
+                currentIndex = 0;
+                isPlayer1Moving = false;
+                ResetColors();
+            }
         }
 
         if (Vector3.Distance(player1.transform.position, housePos11) < 0.4f && !house11Delivered)
@@ -428,6 +489,13 @@ public class PlayerMovement : MonoBehaviour
             house11Delivered = true;
             player1Score++;
             score1.text = "Player 1 Score: " + player1Score;
+            if (house11Delivered)
+            {
+                clickedGridPoints.Clear();
+                currentIndex = 0;
+                isPlayer1Moving = false;
+                ResetColors();
+            }
         }
 
         //PLAYER 2 DELIVERIES
@@ -436,8 +504,15 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("Player 2 has made a delivery to house 1");
             cover1.SetActive(true);
             house1Delivered = true;
-            player2Score++;
-            score2.text = "Player 2 Score: " + player2Score;
+            //player2Score++;
+            //score2.text = "Player 2 Score: " + player2Score;
+            if (house1Delivered)
+            {
+                clickedGridPoints.Clear();
+                currentIndex = 0;
+                isPlayer2Moving = false;
+                ResetColors();
+            }
         }
 
         if (Vector3.Distance(player2.transform.position, housePos2) < 0.4f && !house2Delivered)
@@ -445,8 +520,15 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("Player 2 has made a delivery to house 2");
             cover2.SetActive(true);
             house2Delivered = true;
-            player2Score++;
-            score2.text = "Player 2 Score: " + player2Score;
+            //player2Score++;
+            //score2.text = "Player 2 Score: " + player2Score;
+            if (house2Delivered)
+            {
+                clickedGridPoints.Clear();
+                currentIndex = 0;
+                isPlayer2Moving = false;
+                ResetColors();
+            }
         }
 
         if (Vector3.Distance(player2.transform.position, housePos3) < 0.4f && !house3Delivered)
@@ -454,8 +536,15 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("Player 2 has made a delivery to house 3");
             cover3.SetActive(true);
             house3Delivered = true;
-            player2Score++;
-            score2.text = "Player 2 Score: " + player2Score;
+            //player2Score++;
+            //score2.text = "Player 2 Score: " + player2Score;
+            if (house3Delivered)
+            {
+                clickedGridPoints.Clear();
+                currentIndex = 0;
+                isPlayer2Moving = false;
+                ResetColors();
+            }
         }
 
         if (Vector3.Distance(player2.transform.position, housePos4) < 0.4f && !house4Delivered)
@@ -463,8 +552,15 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("Player 2 has made a delivery to house 4");
             cover4.SetActive(true);
             house4Delivered = true;
-            player2Score++;
-            score2.text = "Player 2 Score: " + player2Score;
+            //player2Score++;
+            //score2.text = "Player 2 Score: " + player2Score;
+            if (house4Delivered)
+            {
+                clickedGridPoints.Clear();
+                currentIndex = 0;
+                isPlayer2Moving = false;
+                ResetColors();
+            }
         }
 
         if (Vector3.Distance(player2.transform.position, housePos5) < 0.4f && !house5Delivered)
@@ -472,8 +568,15 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("Player 2 has made a delivery to house 5");
             cover5.SetActive(true);
             house5Delivered = true;
-            player2Score++;
-            score2.text = "Player 2 Score: " + player2Score;
+            //player2Score++;
+            //score2.text = "Player 2 Score: " + player2Score;
+            if (house5Delivered)
+            {
+                clickedGridPoints.Clear();
+                currentIndex = 0;
+                isPlayer2Moving = false;
+                ResetColors();
+            }
         }
 
         if (Vector3.Distance(player2.transform.position, housePos6) < 0.4f && !house6Delivered)
@@ -481,8 +584,15 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("Player 2 has made a delivery to house 6");
             cover6.SetActive(true);
             house6Delivered = true;
-            player2Score++;
-            score2.text = "Player 2 Score: " + player2Score;
+            //player2Score++;
+            //score2.text = "Player 2 Score: " + player2Score;
+            if (house6Delivered)
+            {
+                clickedGridPoints.Clear();
+                currentIndex = 0;
+                isPlayer2Moving = false;
+                ResetColors();
+            }
         }
 
         if (Vector3.Distance(player2.transform.position, housePos7) < 0.4f && !house7Delivered)
@@ -490,8 +600,15 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("Player 2 has made a delivery to house 7");
             cover7.SetActive(true);
             house7Delivered = true;
-            player2Score++;
-            score2.text = "Player 2 Score: " + player2Score;
+            //player2Score++;
+            //score2.text = "Player 2 Score: " + player2Score;
+            if (house7Delivered)
+            {
+                clickedGridPoints.Clear();
+                currentIndex = 0;
+                isPlayer2Moving = false;
+                ResetColors();
+            }
         }
 
         if (Vector3.Distance(player2.transform.position, housePos8) < 0.4f && !house8Delivered)
@@ -499,8 +616,15 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("Player 2 has made a delivery to house 8");
             cover8.SetActive(true);
             house8Delivered = true;
-            player2Score++;
-            score2.text = "Player 2 Score: " + player2Score;
+            //player2Score++;
+            //score2.text = "Player 2 Score: " + player2Score;
+            if (house8Delivered)
+            {
+                clickedGridPoints.Clear();
+                currentIndex = 0;
+                isPlayer2Moving = false;
+                ResetColors();
+            }
         }
 
         if (Vector3.Distance(player2.transform.position, housePos9) < 0.4f && !house9Delivered)
@@ -508,8 +632,15 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("Player 2 has made a delivery to house 9");
             cover9.SetActive(true);
             house9Delivered = true;
-            player2Score++;
-            score2.text = "Player 2 Score: " + player2Score;
+            //player2Score++;
+            //score2.text = "Player 2 Score: " + player2Score;
+            if (house9Delivered)
+            {
+                clickedGridPoints.Clear();
+                currentIndex = 0;
+                isPlayer2Moving = false;
+                ResetColors();
+            }
         }
 
         if (Vector3.Distance(player2.transform.position, housePos10) < 0.4f && !house10Delivered)
@@ -517,8 +648,15 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("Player 2 has made a delivery to house 10");
             cover10.SetActive(true);
             house10Delivered = true;
-            player2Score++;
-            score2.text = "Player 2 Score: " + player2Score;
+            //player2Score++;
+            //score2.text = "Player 2 Score: " + player2Score;
+            if (house10Delivered)
+            {
+                clickedGridPoints.Clear();
+                currentIndex = 0;
+                isPlayer2Moving = false;
+                ResetColors();
+            }
         }
 
         if (Vector3.Distance(player2.transform.position, housePos11) < 0.4f && !house11Delivered)
@@ -526,8 +664,15 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("Player 2 has made a delivery to house 11");
             cover11.SetActive(true);
             house11Delivered = true;
-            player2Score++;
-            score2.text = "Player 2 Score: " + player2Score;
+            //player2Score++;
+            //score2.text = "Player 2 Score: " + player2Score;
+            if (house11Delivered)
+            {
+                clickedGridPoints.Clear();
+                currentIndex = 0;
+                isPlayer2Moving = false;
+                ResetColors();
+            }
         }
 
         //WIN CONDITION
@@ -577,7 +722,7 @@ public class PlayerMovement : MonoBehaviour
     {
         float lerpSpeed = 3.0f;
 
-        if (clickedGridPoints.Count > 0 && clickedGridPoints.Count <= menuManager.movementDiceRoll)
+        if (clickedGridPoints.Count > 0 && clickedGridPoints.Count <= rndGen.randomNumber3)
         {
             //set target position according to the element that matches the current index in the list.
             //this is so that the we can go through all the elements in the list by increasing the current index everytime we lerp to a pos.
@@ -623,7 +768,7 @@ public class PlayerMovement : MonoBehaviour
         {
             //if the number of tiles the player has selected exceeds the value in the movement dice roll,
             //display error message and let player select tiles again.
-            if (clickedGridPoints.Count > menuManager.movementDiceRoll)
+            if (clickedGridPoints.Count > rndGen.randomNumber3)
             {
                 errorMessage.text = "The number of tiles you have clicked exceeds the value in the movement dice roll, " +
                     "start selection of tiles over again.";
@@ -642,7 +787,7 @@ public class PlayerMovement : MonoBehaviour
         //Perform previous logic to move player 2
         float lerpSpeed = 3.0f;
 
-        if (clickedGridPoints.Count > 0 && clickedGridPoints.Count <= menuManager.movementDiceRoll)
+        if (clickedGridPoints.Count > 0 && clickedGridPoints.Count <= rndGen.randomNumber3)
         {
             targetPos = clickedGridPoints.ElementAt(currentIndex);
             //Debug.Log(clickedGridPoints[currentIndex]);
@@ -678,7 +823,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            if (clickedGridPoints.Count > menuManager.movementDiceRoll)
+            if (clickedGridPoints.Count > rndGen.randomNumber3)
             {
                 errorMessage.text = "The number of tiles you have clicked exceeds the value in the movement dice roll, " +
                     "start selection of tiles over again.";

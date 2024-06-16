@@ -28,6 +28,7 @@ public class MenuManager : MonoBehaviour
     public GameObject panel;
 
     PlayerMovement movementScript;
+    RandomNumberGenerator rng;
 
     void Awake()
     {
@@ -37,11 +38,12 @@ public class MenuManager : MonoBehaviour
     private void Start()
     {
         movementScript = FindAnyObjectByType<PlayerMovement>();
+        rng = FindObjectOfType<RandomNumberGenerator>();
     }
 
     private void Update()
     {
-        displayMovementRoll.text = "Moves: \n" + movementDiceRoll.ToString();
+        displayMovementRoll.text = "Moves: \n" + rng.randomNumber3.ToString();
     }
 
     public void Confirm()
@@ -79,7 +81,8 @@ public class MenuManager : MonoBehaviour
 
     public void GenerateMovement()
     {
-        movementDiceRoll = Random.Range(2, 7);
+        movementDiceRoll = rng.randomNumber3;
+        displayMovementRoll.text = "Moves: \n" + rng.randomNumber3.ToString();
     }
 
     public void Restart(string sceneName)
