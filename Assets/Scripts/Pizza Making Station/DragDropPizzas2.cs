@@ -17,6 +17,8 @@ public class DragDropPizzas2 : MonoBehaviour
     //public Text player1Score;
     public Text player2Score;
 
+    public Player2MoneySystem moneySystem;
+  
     Vector3 targetRotation = new Vector3(65f, 10f, 0f);
     Vector3 targetScale = new Vector3(2300f, 3500f, 1800f);
 
@@ -58,12 +60,18 @@ public class DragDropPizzas2 : MonoBehaviour
                 {
                     playerMove.player2Score += pointsToAdd;
                     player2Score.text = "Player 2 Score: " + playerMove.player2Score;
-                    firstScript.house1 = true;
+                moneySystem.money += 5;
+                moneySystem.UpdateMoneyText();
+                moneySystem.UpdateShopMoneyText();
+                firstScript.house1 = true;
                     if (parent != null)
                         DestroyChildObjects(parent);
                     pointsToAdd = 0;
                     ClearParentReference();
-                }
+                 
+                    
+               
+            }
             }
 
             if (playerMove.house2Delivered && !firstScript.house2)
@@ -72,12 +80,16 @@ public class DragDropPizzas2 : MonoBehaviour
                 {
                     playerMove.player2Score += pointsToAdd;
                     player2Score.text = "Player 2 Score: " + playerMove.player2Score;
-                    firstScript.house2 = true;
+                moneySystem.money += 5;
+                moneySystem.UpdateMoneyText();
+                moneySystem.UpdateShopMoneyText();
+                firstScript.house2 = true;
                     if (parent != null)
                         DestroyChildObjects(parent);
                     pointsToAdd = 0;
                     ClearParentReference();
-                }
+                
+            }
             }
 
             if (playerMove.house3Delivered && !firstScript.house3)
@@ -86,12 +98,16 @@ public class DragDropPizzas2 : MonoBehaviour
                 {
                     playerMove.player2Score += pointsToAdd;
                     player2Score.text = "Player 2 Score: " + playerMove.player2Score;
-                    firstScript.house3 = true;
+                moneySystem.money += 5;
+                moneySystem.UpdateMoneyText();
+                moneySystem.UpdateShopMoneyText();
+                firstScript.house3 = true;
                     if (parent != null)
                         DestroyChildObjects(parent);
                     pointsToAdd = 0;
                     ClearParentReference();
-                }
+               
+            }
             }
 
             if (playerMove.house4Delivered && !firstScript.house4)
@@ -100,11 +116,15 @@ public class DragDropPizzas2 : MonoBehaviour
                 {
                     playerMove.player2Score += pointsToAdd;
                     player2Score.text = "Player 2 Score: " + playerMove.player2Score;
-                    firstScript.house4 = true;
+                moneySystem.money += 5;
+                moneySystem.UpdateMoneyText();
+                moneySystem.UpdateShopMoneyText();
+                firstScript.house4 = true;
                     if (parent != null)
                         DestroyChildObjects(parent);
                     pointsToAdd = 0;
                 ClearParentReference();
+               
             }
             }
 
@@ -115,11 +135,15 @@ public class DragDropPizzas2 : MonoBehaviour
                 {
                     playerMove.player2Score += pointsToAdd;
                     player2Score.text = "Player 2 Score: " + playerMove.player2Score;
-                    firstScript.house5 = true;
+                moneySystem.money += 5;
+                moneySystem.UpdateMoneyText();
+                moneySystem.UpdateShopMoneyText();
+                firstScript.house5 = true;
                     if (parent != null)
                         DestroyChildObjects(parent);
                     pointsToAdd = 0;
                 ClearParentReference();
+                
             }
             }
 
@@ -129,11 +153,15 @@ public class DragDropPizzas2 : MonoBehaviour
                 {
                     playerMove.player2Score += pointsToAdd;
                     player2Score.text = "Player 2 Score: " + playerMove.player2Score;
-                    firstScript.house6 = true;
+                moneySystem.money += 5;
+                moneySystem.UpdateMoneyText();
+                moneySystem.UpdateShopMoneyText();
+                firstScript.house6 = true;
                     if (parent != null)
                         DestroyChildObjects(parent);
                     pointsToAdd = 0;
                 ClearParentReference();
+                
             }
             }
 
@@ -143,11 +171,15 @@ public class DragDropPizzas2 : MonoBehaviour
                 {
                     playerMove.player2Score += pointsToAdd;
                     player2Score.text = "Player 2 Score: " + playerMove.player2Score;
-                    firstScript.house7 = true;
+                moneySystem.money += 5;
+                moneySystem.UpdateMoneyText();
+                moneySystem.UpdateShopMoneyText();
+                firstScript.house7 = true;
                     if (parent != null)
                         DestroyChildObjects(parent);
                     pointsToAdd = 0;
                 ClearParentReference();
+                
             }
             }
 
@@ -157,11 +189,15 @@ public class DragDropPizzas2 : MonoBehaviour
                 {
                     playerMove.player2Score += pointsToAdd;
                     player2Score.text = "Player 2 Score: " + playerMove.player2Score;
-                    firstScript.house8 = true;
+                moneySystem.money += 5;
+                moneySystem.UpdateMoneyText();
+                moneySystem.UpdateShopMoneyText();
+                firstScript.house8 = true;
                     if (parent != null)
                         DestroyChildObjects(parent);
                     pointsToAdd = 0;
                 ClearParentReference();
+                
             }
             }
 
@@ -171,11 +207,15 @@ public class DragDropPizzas2 : MonoBehaviour
                 {
                     playerMove.player2Score += pointsToAdd;
                     player2Score.text = "Player 2 Score: " + playerMove.player2Score;
-                    firstScript.house9 = true;
+                moneySystem.money += 5;
+                moneySystem.UpdateMoneyText();
+                moneySystem.UpdateShopMoneyText();
+                firstScript.house9 = true;
                     if (parent != null)
                         DestroyChildObjects(parent);
                     pointsToAdd = 0;
                 ClearParentReference();
+                
             }
             }
 
@@ -185,11 +225,15 @@ public class DragDropPizzas2 : MonoBehaviour
                 {
                     playerMove.player2Score += pointsToAdd;
                     player2Score.text = "Player 2 Score: " + playerMove.player2Score;
-                    firstScript.house10 = true;
+                moneySystem.money += 5;
+                moneySystem.UpdateMoneyText();
+                moneySystem.UpdateShopMoneyText();
+                firstScript.house10 = true;
                     if (parent != null)
                         DestroyChildObjects(parent);
                     pointsToAdd = 0;
                 ClearParentReference();
+                
             }
             }
 
@@ -199,11 +243,15 @@ public class DragDropPizzas2 : MonoBehaviour
                 {
                     playerMove.player2Score += pointsToAdd;
                     player2Score.text = "Player 2 Score: " + playerMove.player2Score;
-                    firstScript.house11 = true;
+                moneySystem.money += 5;
+                moneySystem.UpdateMoneyText();
+                moneySystem.UpdateShopMoneyText();
+                firstScript.house11 = true;
                     if (parent != null)
                         DestroyChildObjects(parent);
                     pointsToAdd = 0;
                 ClearParentReference();
+                
             }
             }
 

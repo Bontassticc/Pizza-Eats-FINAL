@@ -4110,6 +4110,7 @@ MonoBehaviour:
   house9: 0
   house10: 0
   house11: 0
+  moneySystem: {fileID: 1624445572}
 --- !u!1 &174236400
 GameObject:
   m_ObjectHideFlags: 0
@@ -4577,6 +4578,7 @@ MonoBehaviour:
   house9: 0
   house10: 0
   house11: 0
+  moneySystem: {fileID: 1624445572}
 --- !u!4 &201562459 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 897132001187995186, guid: 78534580960bd5347bfe57aea2908d91, type: 3}
@@ -5185,6 +5187,7 @@ MonoBehaviour:
   house9: 0
   house10: 0
   house11: 0
+  moneySystem: {fileID: 1624445572}
 --- !u!1001 &235501616
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5944,6 +5947,7 @@ MonoBehaviour:
   snapTag: 
   playerMove: {fileID: 66353936}
   player2Score: {fileID: 1577868863}
+  moneySystem: {fileID: 1756681405}
   firstScript: {fileID: 729912533}
 --- !u!61 &274559083
 BoxCollider2D:
@@ -7263,7 +7267,6 @@ RectTransform:
   - {fileID: 1248044412}
   - {fileID: 1000617488}
   - {fileID: 1652412386}
-  - {fileID: 1733777232}
   - {fileID: 1859041316}
   - {fileID: 986545606}
   m_Father: {fileID: 485390466}
@@ -11911,6 +11914,7 @@ MonoBehaviour:
   house9: 0
   house10: 0
   house11: 0
+  moneySystem: {fileID: 1624445572}
 --- !u!1 &731678686
 GameObject:
   m_ObjectHideFlags: 0
@@ -13692,6 +13696,7 @@ MonoBehaviour:
   snapTag: 
   playerMove: {fileID: 66353936}
   player2Score: {fileID: 1577868863}
+  moneySystem: {fileID: 1756681405}
   firstScript: {fileID: 729912533}
 --- !u!61 &829291255
 BoxCollider2D:
@@ -14676,6 +14681,7 @@ MonoBehaviour:
   snapTag: 
   playerMove: {fileID: 66353936}
   player2Score: {fileID: 1577868863}
+  moneySystem: {fileID: 1756681405}
   firstScript: {fileID: 729912533}
 --- !u!61 &882925569
 BoxCollider2D:
@@ -16784,6 +16790,7 @@ MonoBehaviour:
   house9: 0
   house10: 0
   house11: 0
+  moneySystem: {fileID: 1624445572}
 --- !u!4 &986671719 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 431876, guid: 86665e566268cb5469dbb3747ca2839d, type: 3}
@@ -21128,6 +21135,7 @@ MonoBehaviour:
   house9: 0
   house10: 0
   house11: 0
+  moneySystem: {fileID: 1624445572}
 --- !u!1 &1201356640
 GameObject:
   m_ObjectHideFlags: 0
@@ -21853,6 +21861,7 @@ MonoBehaviour:
   snapTag: 
   playerMove: {fileID: 66353936}
   player2Score: {fileID: 1577868863}
+  moneySystem: {fileID: 1756681405}
   firstScript: {fileID: 729912533}
 --- !u!61 &1254625924
 BoxCollider2D:
@@ -22544,6 +22553,7 @@ MonoBehaviour:
   snapTag: 
   playerMove: {fileID: 66353936}
   player2Score: {fileID: 1577868863}
+  moneySystem: {fileID: 1756681405}
   firstScript: {fileID: 729912533}
 --- !u!61 &1294860511
 BoxCollider2D:
@@ -24995,6 +25005,7 @@ MonoBehaviour:
   snapTag: 
   playerMove: {fileID: 66353936}
   player2Score: {fileID: 1577868863}
+  moneySystem: {fileID: 1756681405}
   firstScript: {fileID: 729912533}
 --- !u!61 &1464955089
 BoxCollider2D:
@@ -25410,6 +25421,7 @@ MonoBehaviour:
   house9: 0
   house10: 0
   house11: 0
+  moneySystem: {fileID: 1624445572}
 --- !u!1 &1485264101
 GameObject:
   m_ObjectHideFlags: 0
@@ -25567,6 +25579,7 @@ MonoBehaviour:
   house9: 0
   house10: 0
   house11: 0
+  moneySystem: {fileID: 1624445572}
 --- !u!1 &1496068692
 GameObject:
   m_ObjectHideFlags: 0
@@ -26401,6 +26414,134 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1540698156}
   m_CullTransparentMesh: 1
+--- !u!1 &1542449666
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1542449668}
+  - component: {fileID: 1542449667}
+  m_Layer: 0
+  m_Name: Sound
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &1542449667
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1542449666}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 3b0efe5045a269a40bd4c34875ce93ce, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &1542449668
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1542449666}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.6662501, y: -1.1628054, z: 90}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1544999848
 GameObject:
   m_ObjectHideFlags: 0
@@ -27789,6 +27930,7 @@ MonoBehaviour:
   snapTag: 
   playerMove: {fileID: 66353936}
   player2Score: {fileID: 1577868863}
+  moneySystem: {fileID: 1756681405}
   firstScript: {fileID: 729912533}
 --- !u!61 &1614784380
 BoxCollider2D:
@@ -28087,6 +28229,14 @@ MonoBehaviour:
   ChickenPrice: 30
   PeppersPrice: 20
   PepperoniPrice: 45
+  InPineapplePrice: 10
+  InMushroomPrce: 15
+  InBeefPrice: 15
+  InCheesePrice: 20
+  InBaconPrice: 20
+  InChickenPrice: 15
+  InPeppersPrice: 10
+  InPepperoniPrice: 25
 --- !u!1001 &1630832866
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28695,7 +28845,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1666107809
 RectTransform:
   m_ObjectHideFlags: 0
@@ -29762,7 +29912,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1076336538}
-  m_Father: {fileID: 351666408}
+  m_Father: {fileID: 1859041316}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -29781,7 +29931,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09b0d8e3c012bf14d865989c797351de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Shop: {fileID: 2061371062}
+  Shop: {fileID: 911399639}
 --- !u!114 &1733777234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29826,7 +29976,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2061371064}
+      - m_Target: {fileID: 1733777233}
         m_TargetAssemblyTypeName: ShopButton, Assembly-CSharp
         m_MethodName: ActivateShop
         m_Mode: 1
@@ -30207,6 +30357,14 @@ MonoBehaviour:
   ChickenPrice: 30
   PeppersPrice: 20
   PepperoniPrice: 45
+  InPineapplePrice: 10
+  InMushroomPrce: 15
+  InBeefPrice: 15
+  InCheesePrice: 20
+  InBaconPrice: 20
+  InChickenPrice: 15
+  InPeppersPrice: 10
+  InPepperoniPrice: 25
 --- !u!4 &1756681406
 Transform:
   m_ObjectHideFlags: 0
@@ -30614,6 +30772,7 @@ MonoBehaviour:
   snapTag: 
   playerMove: {fileID: 66353936}
   player2Score: {fileID: 1577868863}
+  moneySystem: {fileID: 1756681405}
   firstScript: {fileID: 729912533}
 --- !u!61 &1782882843
 BoxCollider2D:
@@ -32162,7 +32321,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1859041316
 RectTransform:
   m_ObjectHideFlags: 0
@@ -32183,6 +32342,7 @@ RectTransform:
   - {fileID: 1496068693}
   - {fileID: 1839735787}
   - {fileID: 818710214}
+  - {fileID: 1733777232}
   m_Father: {fileID: 351666408}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -32445,6 +32605,7 @@ MonoBehaviour:
   house9: 0
   house10: 0
   house11: 0
+  moneySystem: {fileID: 1624445572}
 --- !u!1 &1876388904
 GameObject:
   m_ObjectHideFlags: 0
@@ -37056,3 +37217,4 @@ SceneRoots:
   - {fileID: 1274026429}
   - {fileID: 1382812316}
   - {fileID: 729669570}
+  - {fileID: 1542449668}

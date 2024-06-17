@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst.CompilerServices;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -29,6 +30,8 @@ public class DragAndDropPizzas : MonoBehaviour
     public bool house10 = false;
     public bool house11 = false;
 
+    public Player1MoneySystem1 moneySystem;
+   
     Vector3 targetRotation = new Vector3(65f, 10f, 0f);
     Vector3 targetScale = new Vector3(2300f, 3500f, 1800f);
 
@@ -63,12 +66,17 @@ public class DragAndDropPizzas : MonoBehaviour
                 {
                     playerMove.player1Score += pointsToAdd;
                     player1Score.text = "Player 1 Score: " + playerMove.player1Score;
-                    if (parent != null)
+                moneySystem.money += 10;
+                moneySystem.UpdateMoneyText();
+                moneySystem.UpdateShopMoneyText();
+                if (parent != null)
                         DestroyChildObjects(parent);
                     house1 = true;
                     pointsToAdd = 0;
                     ClearParentReference();
-                }
+
+
+            }
             }
 
             if (playerMove.house2Delivered && !house2)
@@ -77,11 +85,16 @@ public class DragAndDropPizzas : MonoBehaviour
                 {
                     playerMove.player1Score += pointsToAdd;
                     player1Score.text = "Player 1 Score: " + playerMove.player1Score;
-                    if (parent != null)
+                moneySystem.money += 5;
+                moneySystem.UpdateMoneyText();
+                moneySystem.UpdateShopMoneyText();
+                if (parent != null)
                         DestroyChildObjects(parent);
                     house2 = true;
                     pointsToAdd = 0;
                     ClearParentReference();
+
+
                 }
             }
 
@@ -91,11 +104,15 @@ public class DragAndDropPizzas : MonoBehaviour
                 {
                     playerMove.player1Score += pointsToAdd;
                     player1Score.text = "Player 1 Score: " + playerMove.player1Score;
-                    if (parent != null)
+                moneySystem.money += 5;
+                moneySystem.UpdateMoneyText();
+                moneySystem.UpdateShopMoneyText();
+                if (parent != null)
                         DestroyChildObjects(parent);
                     house3 = true;
                     pointsToAdd = 0;
                     ClearParentReference();
+                
                 }
             }
 
@@ -106,12 +123,16 @@ public class DragAndDropPizzas : MonoBehaviour
                 {
                     playerMove.player1Score += pointsToAdd;
                     player1Score.text = "Player 1 Score: " + playerMove.player1Score;
-                    if (parent != null)
+                moneySystem.money += 5;
+                moneySystem.UpdateMoneyText();
+                moneySystem.UpdateShopMoneyText();
+                if (parent != null)
                         DestroyChildObjects(parent);
                     house4 = true;
                     pointsToAdd = 0;
                     ClearParentReference();
-                }
+            
+            }
             }
 
             if (playerMove.house5Delivered && !house5)
@@ -120,12 +141,16 @@ public class DragAndDropPizzas : MonoBehaviour
                 {
                     playerMove.player1Score += pointsToAdd;
                     player1Score.text = "Player 1 Score: " + playerMove.player1Score;
-                    if (parent != null)
+                moneySystem.money += 5;
+                moneySystem.UpdateMoneyText();
+                moneySystem.UpdateShopMoneyText();
+                if (parent != null)
                         DestroyChildObjects(parent);
                     house5 = true;
                     pointsToAdd = 0;
                     ClearParentReference();
-                }
+               
+            }
             }
 
             if (playerMove.house6Delivered && !house6)
@@ -134,12 +159,16 @@ public class DragAndDropPizzas : MonoBehaviour
                 {
                     playerMove.player1Score += pointsToAdd;
                     player1Score.text = "Player 1 Score: " + playerMove.player1Score;
-                    if (parent != null)
+                moneySystem.money += 5;
+                moneySystem.UpdateMoneyText();
+                moneySystem.UpdateShopMoneyText();
+                if (parent != null)
                         DestroyChildObjects(parent);
                     house6 = true;
                     pointsToAdd = 0;
                     ClearParentReference();
-                }
+          
+            }
             }
 
             if (playerMove.house7Delivered && !house7)
@@ -148,12 +177,16 @@ public class DragAndDropPizzas : MonoBehaviour
                 {
                     playerMove.player1Score += pointsToAdd;
                     player1Score.text = "Player 1 Score: " + playerMove.player1Score;
-                    if (parent != null)
+                moneySystem.money += 5;
+                moneySystem.UpdateMoneyText();
+                moneySystem.UpdateShopMoneyText();
+                if (parent != null)
                         DestroyChildObjects(parent);
                     house7 = true;
                     pointsToAdd = 0;
                     ClearParentReference();
-                }
+             
+            }
             }
 
             if (playerMove.house8Delivered && !house8)
@@ -162,12 +195,16 @@ public class DragAndDropPizzas : MonoBehaviour
                 {
                     playerMove.player1Score += pointsToAdd;
                     player1Score.text = "Player 1 Score: " + playerMove.player1Score;
-                    if (parent != null)
+                moneySystem.money += 5;
+                moneySystem.UpdateMoneyText();
+                moneySystem.UpdateShopMoneyText();
+                if (parent != null)
                         DestroyChildObjects(parent);
                     house8 = true;
                     pointsToAdd = 0;
                     ClearParentReference();
-                }
+                
+            }
             }
 
             if (playerMove.house9Delivered && !house9)
@@ -177,12 +214,16 @@ public class DragAndDropPizzas : MonoBehaviour
                 {
                     playerMove.player1Score += pointsToAdd;
                     player1Score.text = "Player 1 Score: " + playerMove.player1Score;
-                    if (parent != null)
+                moneySystem.money += 5;
+                moneySystem.UpdateMoneyText();
+                moneySystem.UpdateShopMoneyText();
+                if (parent != null)
                         DestroyChildObjects(parent);
                     house9 = true;
                     pointsToAdd = 0;
                     ClearParentReference();
-                }
+         
+            }
 
             }
 
@@ -192,12 +233,16 @@ public class DragAndDropPizzas : MonoBehaviour
                 {
                     playerMove.player1Score += pointsToAdd;
                     player1Score.text = "Player 1 Score: " + playerMove.player1Score;
-                    if (parent != null)
+                moneySystem.money += 5;
+                moneySystem.UpdateMoneyText();
+                moneySystem.UpdateShopMoneyText();
+                if (parent != null)
                         DestroyChildObjects(parent);
                     house10 = true;
                     pointsToAdd = 0;
                     ClearParentReference();
-                }
+                
+            }
 
             }
 
@@ -207,12 +252,16 @@ public class DragAndDropPizzas : MonoBehaviour
                 {
                     playerMove.player1Score += pointsToAdd;
                     player1Score.text = "Player 1 Score: " + playerMove.player1Score;
-                    if (parent != null)
+                moneySystem.money += 5;
+                moneySystem.UpdateMoneyText();
+                moneySystem.UpdateShopMoneyText();
+                if (parent != null)
                         DestroyChildObjects(parent);
                     house11 = true;
                     pointsToAdd = 0;
                     ClearParentReference();
-                }
+                
+            }
             }
     }
 
