@@ -11,6 +11,12 @@ public class SceneChanger : MonoBehaviour
 
     }
 
+    public void Tutorial()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
+    }
+
     public void quitGame()
     {
         Application.Quit();

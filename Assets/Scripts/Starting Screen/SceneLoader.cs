@@ -9,4 +9,8 @@ public class SceneLoader : MonoBehaviour
     {
         SceneManager.LoadScene(sourcename);
     }
+    public void TutorialScene(string sourcename)
+    {
+        SceneManager.LoadScene(sourcename);
+    }
 }
