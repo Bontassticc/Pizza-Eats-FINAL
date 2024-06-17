@@ -56,155 +56,164 @@ public class DragAndDropPizzas : MonoBehaviour
             transform.position = new Vector3(newPosition.x, newPosition.y, transform.position.z);
         }
 
-        if (playerMove.house1Delivered && !house1)
-        {
-            
-            if (playerMove.player1Turn)
+
+            if (playerMove.house1Delivered && !house1)
             {
+                if (playerMove.player1Turn)
+                {
                     playerMove.player1Score += pointsToAdd;
                     player1Score.text = "Player 1 Score: " + playerMove.player1Score;
+                    if (parent != null)
+                        DestroyChildObjects(parent);
+                    house1 = true;
+                    pointsToAdd = 0;
+                    ClearParentReference();
+                }
             }
-            DestroyChildObjects(parent);
-            house1 = true;
-            pointsToAdd = 0;
-            
-        }
 
-        if (playerMove.house2Delivered && !house2)
-        {
-            
+            if (playerMove.house2Delivered && !house2)
+            {
                 if (playerMove.player1Turn)
                 {
                     playerMove.player1Score += pointsToAdd;
                     player1Score.text = "Player 1 Score: " + playerMove.player1Score;
+                    if (parent != null)
+                        DestroyChildObjects(parent);
+                    house2 = true;
+                    pointsToAdd = 0;
+                    ClearParentReference();
                 }
-            DestroyChildObjects(parent);
-            house2 = true;
-            pointsToAdd = 0;
-            
-        }
+            }
 
-        if (playerMove.house3Delivered && !house3)
-        {
-            
+            if (playerMove.house3Delivered && !house3)
+            {
                 if (playerMove.player1Turn)
                 {
                     playerMove.player1Score += pointsToAdd;
                     player1Score.text = "Player 1 Score: " + playerMove.player1Score;
+                    if (parent != null)
+                        DestroyChildObjects(parent);
+                    house3 = true;
+                    pointsToAdd = 0;
+                    ClearParentReference();
                 }
-            DestroyChildObjects(parent);
-            house3 = true;
-            pointsToAdd = 0;
-            
-        }
+            }
 
-        if (playerMove.house4Delivered && !house4)
-        {
-            
-                if(playerMove.player1Turn)
-                {
-                    playerMove.player1Score += pointsToAdd;
-                    player1Score.text = "Player 1 Score: " + playerMove.player1Score;
-                }
-            DestroyChildObjects(parent);
-            house4 = true;
-            pointsToAdd = 0;
-            
-        }
+            if (playerMove.house4Delivered && !house4)
+            {
 
-        if (playerMove.house5Delivered && !house5)
-        {
                 if (playerMove.player1Turn)
                 {
                     playerMove.player1Score += pointsToAdd;
                     player1Score.text = "Player 1 Score: " + playerMove.player1Score;
+                    if (parent != null)
+                        DestroyChildObjects(parent);
+                    house4 = true;
+                    pointsToAdd = 0;
+                    ClearParentReference();
                 }
-            DestroyChildObjects(parent);
-            house5 = true;
-            pointsToAdd = 0;
-            
-        }
+            }
 
-        if (playerMove.house6Delivered && !house6)
-        {
+            if (playerMove.house5Delivered && !house5)
+            {
                 if (playerMove.player1Turn)
                 {
                     playerMove.player1Score += pointsToAdd;
                     player1Score.text = "Player 1 Score: " + playerMove.player1Score;
+                    if (parent != null)
+                        DestroyChildObjects(parent);
+                    house5 = true;
+                    pointsToAdd = 0;
+                    ClearParentReference();
                 }
-            DestroyChildObjects(parent);
-            house6 = true;
-            pointsToAdd = 0;
-            
-        }
+            }
 
-        if (playerMove.house7Delivered && !house7)
-        {
-            
+            if (playerMove.house6Delivered && !house6)
+            {
                 if (playerMove.player1Turn)
                 {
                     playerMove.player1Score += pointsToAdd;
                     player1Score.text = "Player 1 Score: " + playerMove.player1Score;
+                    if (parent != null)
+                        DestroyChildObjects(parent);
+                    house6 = true;
+                    pointsToAdd = 0;
+                    ClearParentReference();
                 }
-            DestroyChildObjects(parent);
-            house7 = true;
-            pointsToAdd = 0;
-            
-        }
+            }
 
-        if (playerMove.house8Delivered && !house8)
-        {
-            
+            if (playerMove.house7Delivered && !house7)
+            {
                 if (playerMove.player1Turn)
                 {
                     playerMove.player1Score += pointsToAdd;
                     player1Score.text = "Player 1 Score: " + playerMove.player1Score;
+                    if (parent != null)
+                        DestroyChildObjects(parent);
+                    house7 = true;
+                    pointsToAdd = 0;
+                    ClearParentReference();
                 }
-            DestroyChildObjects(parent);
-            house8 = true;
-            pointsToAdd = 0;
-            
-        }
+            }
 
-        if (playerMove.house9Delivered && !house9)
-        {
-            
+            if (playerMove.house8Delivered && !house8)
+            {
                 if (playerMove.player1Turn)
                 {
                     playerMove.player1Score += pointsToAdd;
                     player1Score.text = "Player 1 Score: " + playerMove.player1Score;
+                    if (parent != null)
+                        DestroyChildObjects(parent);
+                    house8 = true;
+                    pointsToAdd = 0;
+                    ClearParentReference();
                 }
-            DestroyChildObjects(parent);
-            house9 = true;
-            pointsToAdd = 0;
-            
-        }
+            }
 
-        if (playerMove.house10Delivered && !house10)
-        {
+            if (playerMove.house9Delivered && !house9)
+            {
+
                 if (playerMove.player1Turn)
                 {
                     playerMove.player1Score += pointsToAdd;
                     player1Score.text = "Player 1 Score: " + playerMove.player1Score;
+                    if (parent != null)
+                        DestroyChildObjects(parent);
+                    house9 = true;
+                    pointsToAdd = 0;
+                    ClearParentReference();
                 }
-            DestroyChildObjects(parent);
-            house10 = true;
-            pointsToAdd = 0;
-            
-        }
 
-        if (playerMove.house11Delivered && !house11)
-        {
+            }
+
+            if (playerMove.house10Delivered && !house10)
+            {
                 if (playerMove.player1Turn)
                 {
                     playerMove.player1Score += pointsToAdd;
                     player1Score.text = "Player 1 Score: " + playerMove.player1Score;
+                    if (parent != null)
+                        DestroyChildObjects(parent);
+                    house10 = true;
+                    pointsToAdd = 0;
+                    ClearParentReference();
                 }
-            DestroyChildObjects(parent);
-            house11 = true;
-            pointsToAdd = 0;
-            
-        }
+
+            }
+
+            if (playerMove.house11Delivered && !house11)
+            {
+                if (playerMove.player1Turn)
+                {
+                    playerMove.player1Score += pointsToAdd;
+                    player1Score.text = "Player 1 Score: " + playerMove.player1Score;
+                    if (parent != null)
+                        DestroyChildObjects(parent);
+                    house11 = true;
+                    pointsToAdd = 0;
+                    ClearParentReference();
+                }
+            }
     }
 
     private void SnapToInventory()
@@ -250,6 +259,10 @@ public class DragAndDropPizzas : MonoBehaviour
             GameObject childObject = child.gameObject;
             Destroy(childObject);
         }
+    }
+    void ClearParentReference()
+    {
+        parent = null;
     }
 
 

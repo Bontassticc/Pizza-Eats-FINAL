@@ -2316,7 +2316,6 @@ MonoBehaviour:
   player2Anim: {fileID: 1173424193}
   tilemap: {fileID: 66353935}
   clickedGridPoints: []
-  rndGen: {fileID: 165474628}
   isPlayer1Moving: 0
   isPlayer2Moving: 0
   errorMessage: {fileID: 282904781}
@@ -3344,45 +3343,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe28686f72f81414fa1dc9ab5dcb2157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Bowl1: {fileID: 134663281}
-  Bowl2: {fileID: 776926414}
-  Bowl3: {fileID: 1785506859}
-  Bowl4: {fileID: 1711019985}
-  Bowl5: {fileID: 959708069}
-  Bowl6: {fileID: 322628507}
-  Bowl7: {fileID: 1838956653}
-  Bowl8: {fileID: 1305618474}
-  Pizza1: {fileID: 2001796492}
-  Pizza2: {fileID: 165693188}
-  Pizza3: {fileID: 1666545576}
-  Pizza4: {fileID: 665533317}
-  Pizza5: {fileID: 2099281345}
-  Pizza6: {fileID: 2088950709}
-  Pizza7: {fileID: 489370170}
-  Pizza8: {fileID: 40921726}
-  B1: {fileID: 0}
-  B2: {fileID: 0}
-  B3: {fileID: 0}
-  B4: {fileID: 0}
-  B5: {fileID: 0}
-  B6: {fileID: 0}
-  B7: {fileID: 0}
-  B8: {fileID: 0}
-  P1: {fileID: 0}
-  P2: {fileID: 0}
-  P3: {fileID: 0}
-  P4: {fileID: 0}
-  P5: {fileID: 0}
-  P6: {fileID: 0}
-  P7: {fileID: 0}
-  P8: {fileID: 0}
-  randomNumberText1: {fileID: 732827201}
-  randomNumberText2: {fileID: 109042484}
-  randomNumberText3: {fileID: 1423092222}
-  moveDisplay: {fileID: 0}
-  randomNumber1: 0
-  randomNumber2: 0
-  randomNumber3: 0
 --- !u!222 &109042486
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3828,45 +3788,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe28686f72f81414fa1dc9ab5dcb2157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Bowl1: {fileID: 134663281}
-  Bowl2: {fileID: 776926414}
-  Bowl3: {fileID: 1785506859}
-  Bowl4: {fileID: 1711019985}
-  Bowl5: {fileID: 959708069}
-  Bowl6: {fileID: 322628507}
-  Bowl7: {fileID: 1838956653}
-  Bowl8: {fileID: 1305618474}
-  Pizza1: {fileID: 2001796492}
-  Pizza2: {fileID: 165693188}
-  Pizza3: {fileID: 1666545576}
-  Pizza4: {fileID: 665533317}
-  Pizza5: {fileID: 2099281345}
-  Pizza6: {fileID: 2088950709}
-  Pizza7: {fileID: 489370170}
-  Pizza8: {fileID: 40921726}
-  B1: {fileID: 404067495}
-  B2: {fileID: 988609196}
-  B3: {fileID: 1043761070}
-  B4: {fileID: 1316847840}
-  B5: {fileID: 1657279076}
-  B6: {fileID: 1241101552}
-  B7: {fileID: 1611797812}
-  B8: {fileID: 841205578}
-  P1: {fileID: 404067495}
-  P2: {fileID: 988609196}
-  P3: {fileID: 1043761070}
-  P4: {fileID: 1316847840}
-  P5: {fileID: 1657279076}
-  P6: {fileID: 1241101552}
-  P7: {fileID: 1611797812}
-  P8: {fileID: 841205578}
-  randomNumberText1: {fileID: 732827201}
-  randomNumberText2: {fileID: 109042484}
-  randomNumberText3: {fileID: 1423092222}
-  moveDisplay: {fileID: 1457580583}
-  randomNumber1: 0
-  randomNumber2: 0
-  randomNumber3: 0
 --- !u!4 &165474629
 Transform:
   m_ObjectHideFlags: 0
@@ -4982,21 +4903,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 165474628}
-        m_TargetAssemblyTypeName: RandomNumberGenerator, Assembly-CSharp
-        m_MethodName: GenerateRandomNumber
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 839115592}
         m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
-        m_MethodName: GenerateMovement
+        m_MethodName: GenerateRandomNumber
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9845,21 +9754,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 165474628}
-        m_TargetAssemblyTypeName: RandomNumberGenerator, Assembly-CSharp
-        m_MethodName: GenerateRandomNumber
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 839115592}
         m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
-        m_MethodName: GenerateMovement
+        m_MethodName: GenerateRandomNumber
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11054,6 +10951,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 665533317}
   m_CullTransparentMesh: 1
+--- !u!1 &666788615
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 666788616}
+  - component: {fileID: 666788617}
+  m_Layer: 0
+  m_Name: RND Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &666788616
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 666788615}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1538975843}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &666788617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 666788615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe28686f72f81414fa1dc9ab5dcb2157, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &668601284
 GameObject:
   m_ObjectHideFlags: 0
@@ -12095,45 +12036,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe28686f72f81414fa1dc9ab5dcb2157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Bowl1: {fileID: 134663281}
-  Bowl2: {fileID: 776926414}
-  Bowl3: {fileID: 1785506859}
-  Bowl4: {fileID: 1711019985}
-  Bowl5: {fileID: 959708069}
-  Bowl6: {fileID: 322628507}
-  Bowl7: {fileID: 1838956653}
-  Bowl8: {fileID: 1305618474}
-  Pizza1: {fileID: 2001796492}
-  Pizza2: {fileID: 165693188}
-  Pizza3: {fileID: 1666545576}
-  Pizza4: {fileID: 665533317}
-  Pizza5: {fileID: 2099281345}
-  Pizza6: {fileID: 2088950709}
-  Pizza7: {fileID: 489370170}
-  Pizza8: {fileID: 40921726}
-  B1: {fileID: 0}
-  B2: {fileID: 0}
-  B3: {fileID: 0}
-  B4: {fileID: 0}
-  B5: {fileID: 0}
-  B6: {fileID: 0}
-  B7: {fileID: 0}
-  B8: {fileID: 0}
-  P1: {fileID: 0}
-  P2: {fileID: 0}
-  P3: {fileID: 0}
-  P4: {fileID: 0}
-  P5: {fileID: 0}
-  P6: {fileID: 0}
-  P7: {fileID: 0}
-  P8: {fileID: 0}
-  randomNumberText1: {fileID: 732827201}
-  randomNumberText2: {fileID: 109042484}
-  randomNumberText3: {fileID: 1423092222}
-  moveDisplay: {fileID: 0}
-  randomNumber1: 0
-  randomNumber2: 0
-  randomNumber3: 0
 --- !u!114 &732827201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14107,6 +14009,45 @@ MonoBehaviour:
   player1: {fileID: 1520214819}
   player2: {fileID: 1274026428}
   panel: {fileID: 558584486}
+  Bowl1: {fileID: 134663281}
+  Bowl2: {fileID: 776926414}
+  Bowl3: {fileID: 1785506859}
+  Bowl4: {fileID: 1711019985}
+  Bowl5: {fileID: 959708069}
+  Bowl6: {fileID: 322628507}
+  Bowl7: {fileID: 1838956653}
+  Bowl8: {fileID: 1305618474}
+  Pizza1: {fileID: 2001796492}
+  Pizza2: {fileID: 165693188}
+  Pizza3: {fileID: 1666545576}
+  Pizza4: {fileID: 665533317}
+  Pizza5: {fileID: 2099281345}
+  Pizza6: {fileID: 2088950709}
+  Pizza7: {fileID: 489370170}
+  Pizza8: {fileID: 40921726}
+  B1: {fileID: 842438902}
+  B2: {fileID: 1223554893}
+  B3: {fileID: 1886115206}
+  B4: {fileID: 1559239297}
+  B5: {fileID: 140398561}
+  B6: {fileID: 1496068692}
+  B7: {fileID: 1839735786}
+  B8: {fileID: 818710213}
+  P1: {fileID: 404067495}
+  P2: {fileID: 988609196}
+  P3: {fileID: 1043761070}
+  P4: {fileID: 1316847840}
+  P5: {fileID: 1657279076}
+  P6: {fileID: 1241101552}
+  P7: {fileID: 1611797812}
+  P8: {fileID: 841205578}
+  randomNumberText1: {fileID: 732827201}
+  randomNumberText2: {fileID: 109042484}
+  randomNumberText3: {fileID: 1423092222}
+  moveDisplay: {fileID: 1457580583}
+  randomNumber1: 0
+  randomNumber2: 0
+  randomNumber3: 0
 --- !u!1 &841205578
 GameObject:
   m_ObjectHideFlags: 0
@@ -24773,45 +24714,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe28686f72f81414fa1dc9ab5dcb2157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Bowl1: {fileID: 134663281}
-  Bowl2: {fileID: 776926414}
-  Bowl3: {fileID: 1785506859}
-  Bowl4: {fileID: 1711019985}
-  Bowl5: {fileID: 959708069}
-  Bowl6: {fileID: 322628507}
-  Bowl7: {fileID: 1838956653}
-  Bowl8: {fileID: 1305618474}
-  Pizza1: {fileID: 2001796492}
-  Pizza2: {fileID: 165693188}
-  Pizza3: {fileID: 1666545576}
-  Pizza4: {fileID: 665533317}
-  Pizza5: {fileID: 2099281345}
-  Pizza6: {fileID: 2088950709}
-  Pizza7: {fileID: 489370170}
-  Pizza8: {fileID: 40921726}
-  B1: {fileID: 0}
-  B2: {fileID: 0}
-  B3: {fileID: 0}
-  B4: {fileID: 0}
-  B5: {fileID: 0}
-  B6: {fileID: 0}
-  B7: {fileID: 0}
-  B8: {fileID: 0}
-  P1: {fileID: 0}
-  P2: {fileID: 0}
-  P3: {fileID: 0}
-  P4: {fileID: 0}
-  P5: {fileID: 0}
-  P6: {fileID: 0}
-  P7: {fileID: 0}
-  P8: {fileID: 0}
-  randomNumberText1: {fileID: 732827201}
-  randomNumberText2: {fileID: 109042484}
-  randomNumberText3: {fileID: 1423092222}
-  moveDisplay: {fileID: 0}
-  randomNumber1: 0
-  randomNumber2: 0
-  randomNumber3: 0
 --- !u!114 &1423092222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26417,6 +26319,7 @@ Transform:
   - {fileID: 839115591}
   - {fileID: 900896091}
   - {fileID: 729912532}
+  - {fileID: 666788616}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1540698156

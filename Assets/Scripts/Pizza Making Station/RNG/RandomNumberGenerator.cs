@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class RandomNumberGenerator : MonoBehaviour
 {
-    //player 1
+   /* //player 1
     public GameObject Bowl1;
     public GameObject Bowl2;
     public GameObject Bowl3;
@@ -142,8 +142,7 @@ public class RandomNumberGenerator : MonoBehaviour
                 Bs[i].SetActive(false);
                 Ps[i].SetActive(false);
             }*/
-        }
-    }
+
 }
 
 

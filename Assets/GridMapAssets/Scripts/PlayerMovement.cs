@@ -22,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
 
     MenuManager menuManager;
     //PanelManagerScript panelManager;
-    public RandomNumberGenerator rndGen;
+    //public RandomNumberGenerator rndGen;
     int currentIndex = 0;
     public bool isPlayer1Moving;
     public bool isPlayer2Moving;
@@ -102,7 +102,7 @@ public class PlayerMovement : MonoBehaviour
     {
         //isConfirmed = false;
         menuManager = FindObjectOfType<MenuManager>();
-        rndGen = FindObjectOfType<RandomNumberGenerator>();
+        //rndGen = GetComponent<RandomNumberGenerator>();
         //panelManager = FindAnyObjectByType<PanelManagerScript>();
         isPlayer1Moving = false;
         isPlayer2Moving = false;
@@ -722,7 +722,7 @@ public class PlayerMovement : MonoBehaviour
     {
         float lerpSpeed = 3.0f;
 
-        if (clickedGridPoints.Count > 0 && clickedGridPoints.Count <= rndGen.randomNumber3)
+        if (clickedGridPoints.Count > 0 && clickedGridPoints.Count <= menuManager.randomNumber3)
         {
             //set target position according to the element that matches the current index in the list.
             //this is so that the we can go through all the elements in the list by increasing the current index everytime we lerp to a pos.
@@ -768,7 +768,7 @@ public class PlayerMovement : MonoBehaviour
         {
             //if the number of tiles the player has selected exceeds the value in the movement dice roll,
             //display error message and let player select tiles again.
-            if (clickedGridPoints.Count > rndGen.randomNumber3)
+            if (clickedGridPoints.Count > menuManager.randomNumber3)
             {
                 errorMessage.text = "The number of tiles you have clicked exceeds the value in the movement dice roll, " +
                     "start selection of tiles over again.";
@@ -787,7 +787,7 @@ public class PlayerMovement : MonoBehaviour
         //Perform previous logic to move player 2
         float lerpSpeed = 3.0f;
 
-        if (clickedGridPoints.Count > 0 && clickedGridPoints.Count <= rndGen.randomNumber3)
+        if (clickedGridPoints.Count > 0 && clickedGridPoints.Count <= menuManager.randomNumber3)
         {
             targetPos = clickedGridPoints.ElementAt(currentIndex);
             //Debug.Log(clickedGridPoints[currentIndex]);
@@ -823,7 +823,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            if (clickedGridPoints.Count > rndGen.randomNumber3)
+            if (clickedGridPoints.Count > menuManager.randomNumber3)
             {
                 errorMessage.text = "The number of tiles you have clicked exceeds the value in the movement dice roll, " +
                     "start selection of tiles over again.";
